@@ -47,6 +47,11 @@ body.mind #cvF{display:none}body.mind #cvM{display:block}
 /* library */
 #lib{width:272px;background:#fff;border-right:1px solid var(--ln);display:flex;flex-direction:column;z-index:20}
 body.hideL #lib,body.mind #lib{display:none}
+#tL{display:none!important}.shd .x{display:none}
+#lTog{position:absolute;left:272px;top:50%;transform:translateY(-50%);z-index:30;width:18px;height:52px;border:1px solid var(--ln);border-left:0;border-radius:0 10px 10px 0;background:#fff;box-shadow:4px 4px 12px rgba(20,30,60,.08);display:grid;place-items:center;color:var(--mut);cursor:pointer;padding:0}
+#lTog:hover{color:var(--ink);background:#f6f8fc}#lTog svg{width:14px;height:14px;transition:transform .2s}
+body.hideL #lTog{left:0}body.hideL #lTog svg{transform:rotate(180deg)}body.mind #lTog{display:none}
+@media(max-width:760px){#lTog{display:none}}
 .shd{display:flex;align-items:center;gap:8px;padding:14px 14px 10px}
 .shd h3{font:800 15px Manrope;flex:1}
 .x{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--mut)}.x:hover{background:#f1f3f8}
@@ -244,6 +249,11 @@ body.mind #dbar{display:none}
 #dbar button.on{background:var(--ink);color:#fff}
 #dbar input{height:30px;border:1px solid var(--ln);border-radius:8px;padding:0 6px;font:600 12px Inter;color:var(--ink)}
 #dbar .sep{width:1px;height:20px;background:var(--ln);margin:0 4px;flex:none}
+#dbar .dsel{position:relative;display:flex;align-items:center;gap:6px;height:30px;padding:0 8px 0 10px;border-radius:8px;background:#f4f6fa;cursor:pointer}
+#dbar .dsel span{font:700 10px Inter;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+#dbar .dsel select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:700 12px Inter;color:var(--ink);padding-right:16px;cursor:pointer;outline:0}
+#dbar .dsel svg{position:absolute;right:8px;width:13px;height:13px;pointer-events:none;color:var(--mut)}
+#dbar .drg{font:600 12px Inter;color:var(--mut);padding:0 6px;white-space:nowrap}
 #dbar .imp{color:var(--b);display:flex;gap:5px;align-items:center}
 #dbar .imp svg{width:15px;height:15px}
 /* orçamento, copy doc, checklist */
@@ -293,6 +303,14 @@ body.mind #dbar{display:none}
 /* visão geral: funis */
 .fc{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid var(--ln);border-radius:13px;margin-top:8px;cursor:pointer;background:#fff;transition:background .15s}
 .fc:hover{background:#f7f9fd}
+.lvg{position:absolute;z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px}.lvg em{font-style:normal;font-size:10.5px;font-weight:600;color:#0866ff;white-space:nowrap;display:flex;align-items:center;gap:5px}.lvg em:before{content:'';width:6px;height:6px;border-radius:50%;background:#18c27a;box-shadow:0 0 0 3px rgba(24,194,122,.18)}
+.lvg>div{display:grid;grid-template-columns:repeat(3,34px);gap:8px}
+.lva{width:34px;height:34px;border-radius:50%;padding:0;border:2.5px solid #c9d0dc;background:#0866ff;color:#fff;position:relative;overflow:hidden;cursor:pointer;display:grid;place-items:center;box-shadow:0 3px 10px rgba(16,24,40,.12);transition:transform .15s}
+.lva svg{width:15px;height:15px}.lva img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.lva:hover{transform:scale(1.15)}.lva.g{border-color:#18c27a}.lva.y{border-color:#ffad33}.lva.r{border-color:#ff5a5a}.lva.sel{outline:2px solid #0147FF;outline-offset:2px}
+.lvc{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#0c8a52;padding:0 6px;white-space:nowrap}.lvc i{width:7px;height:7px;border-radius:50%;background:#18c27a;box-shadow:0 0 0 3px rgba(24,194,122,.18)}
+.lvh{display:flex;gap:12px;align-items:center;margin-bottom:12px}.lvh img{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:none}.lvh b{display:block;font-size:14px;line-height:1.3}.lvon{display:inline-block;margin-top:5px;font-size:10.5px;font-weight:700;color:#0c8a52;background:#d6f5e6;border-radius:20px;padding:2px 8px}
+.lvp{font-size:12px;line-height:1.45;margin-bottom:10px}.lvp span{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin-top:6px}
 .plw{display:flex;flex-direction:column;gap:6px;margin:12px 0 4px;padding:12px;border-radius:13px;background:#f5f7fc;font-size:12px}.plw>b{font-size:12.5px}.plw span{display:flex;gap:8px;align-items:flex-start;color:#334;line-height:1.45}.plw em{font-style:normal}.plw i{font-style:normal;flex:none;width:17px;height:17px;border-radius:50%;background:#0147FF;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center}
 .plt{margin:16px 0 2px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
 .plc{padding:11px 12px;border:1px solid var(--ln);border-radius:13px;margin-top:8px;cursor:pointer;background:#fff;transition:background .15s,box-shadow .15s}.plc:hover{background:#f7f9fd;box-shadow:0 4px 14px rgba(1,71,255,.08)}
@@ -353,6 +371,7 @@ body.mind #dbar{display:none}
  </div>
 </header>
 <main>
+ <button id="lTog" title="Elementos"><svg class="i" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
  <aside id="lib">
   <i class="grab"></i>
   <div class="shd"><h3>Elementos</h3><button class="x" onclick="closeLib()"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
@@ -453,7 +472,7 @@ const E=[
  ['dq','grp','volta pro Web','a',1]
 ];
 
-const VER='v-15.10-14h07';
+const VER='v-15.10-14h22';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uid=()=>Math.random().toString(36).slice(2,9);
@@ -758,7 +777,7 @@ function fRender(){
  const box=$('#nds');box.innerHTML='';box.onclick=e=>{const ai=e.target.closest('.aib[data-ai]');if(ai){const n=nById(ai.closest('.nd').dataset.id);if(n&&confirm('Tirar '+(n.ai||'a IA')+' deste elemento?')){snap();delete n.ai;save();fRender()}return}const op=e.target.closest('.pil[data-op]');if(op){fSelect({t:'n',id:op.closest('.nd').dataset.id});openPanel(op.dataset.op);return}const tg=e.target.closest('.stc[data-tg]');if(tg){const b=FUNB(tg.dataset.tg);if(b)setOn(b.k,b.on===false);return}const a=e.target.closest('.op[data-cfg]');if(!a)return;e.preventDefault();const id=a.closest('.nd').dataset.id;fSelect({t:'n',id});openPanel('cfg');setTimeout(()=>{const u=$('#f_url');if(u){u.focus()}},60)};
  visN().forEach(n=>{const d=document.createElement('div');d.className=`nd ${n.kind}${szOf(n)===SZ.form?' sm':''}${fSel&&fSel.t==='n'&&fSel.id===n.id?' sel':''}${FUNB(n.f)&&FUNB(n.f).on===false?' dim':''}`;d.dataset.id=n.id;d.style.cssText=`left:${n.x}px;top:${n.y}px;--c:${n.col||'#0147FF'}`;d.innerHTML=nodeHTML(n);box.appendChild(d)});
  box.querySelectorAll('.nd').forEach(d=>{const n=nById(d.dataset.id),sh=d.querySelector('.sh');if(n&&n.ai&&sh)sh.insertAdjacentHTML('beforeend',`<b class="aib on" data-ai="1" onpointerdown="event.stopPropagation()" title="${esc(n.ai)} · clique pra tirar">${ic('ai')}</b>`)});
- drawEdges();drawBgs();posFTB();
+ lvBubbles(box);drawEdges();drawBgs();posFTB();
 }
 function anchor(b,side){return side==='r'?{x:b.x+b.w,y:b.y+b.h/2}:side==='l'?{x:b.x,y:b.y+b.h/2}:side==='t'?{x:b.x+b.w/2,y:b.y}:{x:b.x+b.w/2,y:b.y+b.h}}
 function ePath(A,B){
@@ -851,7 +870,7 @@ function quick(x,y,from){
 document.addEventListener('pointerdown',e=>{if(!e.target.closest('#qm'))$('#qm').classList.remove('on');if(!e.target.closest('#help,#zHelp'))$('#help').classList.remove('on')},true);
 /* barra flutuante do nó */
 function posFTB(){
- const tb=$('#ftb');if(!fSel||S.mode!=='funnel'){tb.classList.remove('on');return}
+ const tb=$('#ftb');if(!fSel||fSel.t==='lv'||S.mode!=='funnel'){tb.classList.remove('on');return}
  if(fSel.t==='e'){const pt=EMID[fSel.id],e=S.edges.find(z=>z.id===fSel.id);if(!pt||!e){tb.classList.remove('on');return}
   const v=S.vF,r=$('#cwrap').getBoundingClientRect(),c=cvF.getBoundingClientRect();
   tb.innerHTML=`<button data-a="ecfg" title="Editar texto">${ic('edit')}<span>Editar</span></button><button data-a="edash" title="Contínua / tracejada">${ic('rotate')}</button><i class="sep"></i><button data-a="del" title="Apagar conexão (Del)">${ic('trash')}<span>Apagar</span></button>`;
@@ -865,7 +884,7 @@ $('#ftb').addEventListener('click',e=>{const b=e.target.closest('button');if(!b|
  if(a==='ecfg')openPanel('cfg');if(a==='edash'){const ed=S.edges.find(z=>z.id===fSel.id);if(ed){snap();ed.dash=ed.dash?0:1;save();drawEdges();posFTB()}}
  if(a==='cfg')openPanel('cfg');if(a==='copy')openPanel('copy');if(a==='url'&&n)window.open(n.url,'_blank');if(a==='dup')dupNode();if(a==='del')delSel()});
 function dupNode(){const n=nById(fSel.id);snap();const c={...clone(n),id:'n'+uid(),x:n.x+40,y:n.y+40};S.nodes.push(c);save();fSelect({t:'n',id:c.id})}
-function delSel(){if(!fSel)return;snap();if(fSel.t==='n'){S.nodes=S.nodes.filter(n=>n.id!==fSel.id);S.edges=S.edges.filter(e=>e.a!==fSel.id&&e.b!==fSel.id)}else S.edges=S.edges.filter(e=>e.id!==fSel.id);fSel=null;save();fRender();panel();$('#ftb').classList.remove('on')}
+function delSel(){if(!fSel||fSel.t==='lv')return;snap();if(fSel.t==='n'){S.nodes=S.nodes.filter(n=>n.id!==fSel.id);S.edges=S.edges.filter(e=>e.a!==fSel.id&&e.b!==fSel.id)}else S.edges=S.edges.filter(e=>e.id!==fSel.id);fSel=null;save();fRender();panel();$('#ftb').classList.remove('on')}
 function fSelect(s,keepDom){
  const same=JSON.stringify(s)===JSON.stringify(fSel);fSel=s;
  document.querySelectorAll('#nds .nd').forEach(d=>d.classList.toggle('sel',!!s&&s.t==='n'&&d.dataset.id===s.id));
@@ -883,6 +902,7 @@ function closePanel(){if(isMob())document.body.classList.remove('openR');else{do
 function panel(){
  const H=$('#phead'),B=$('#pbody');document.body.classList.remove('wideP','wideB');
  if(!fSel){H.innerHTML=`<div class="shd"><h3>Visão geral</h3>${closeBtn}</div><div class="ptabs">${[['fun','Funis'],['pla','Plano'],['orc','Orçamento']].map(([k,l])=>`<button data-o="${k}" class="${oTab===k?'on':''}">${l}</button>`).join('')}</div>`;H.querySelectorAll('[data-o]').forEach(x=>x.onclick=()=>{oTab=x.dataset.o;panel()});if(oTab==='orc'){document.body.classList.toggle('wideP',!isMob());B.innerHTML=budUI();bindBud()}else if(oTab==='pla'){B.innerHTML=planUI();bindPlan()}else{B.innerHTML=overview();bindOverview()}return}
+ if(fSel.t==='lv')return lvPanel(H,B);
  if(fSel.t==='e'){const e=S.edges.find(z=>z.id===fSel.id);if(!e){fSel=null;return panel()}const A=nById(e.a),Bn=nById(e.b);
   H.innerHTML=`<div class="shd"><h3>Conexão</h3>${closeBtn}</div>`;
   B.innerHTML=`<p class="muted">${esc(A.nm)} → ${esc(Bn.nm)}</p>${F('Texto na seta',inp('e_l',e.l,'ex.: 45%'))}
@@ -1087,17 +1107,46 @@ function bindOverview(){const B=$('#pbody');
 /* ---------- anúncios (dash) ---------- */
 const brl=v=>'R$ '+(Math.round(v*100)/100).toLocaleString('pt-BR',{minimumFractionDigits:v<100?2:0,maximumFractionDigits:v<100?2:0});
 const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-function range(){const t=new Date(),r=S.dr||{p:'7d'};if(r.p==='cus'&&r.a&&r.b)return [r.a,r.b];if(r.p==='hoje')return [iso(t),iso(t)];
- if(r.p==='mes')return [iso(new Date(t.getFullYear(),t.getMonth(),1)),iso(t)];const n={'7d':7,'14d':14,'30d':30}[r.p]||7;const a=new Date(t);a.setDate(t.getDate()-n+1);return [iso(a),iso(t)]}
-function adM(nm,f){const o={sp:0,ld:0,imp:0,clk:0};if(!S.adsData||!S.adsData.length)return o;
+function range(){const t=new Date(),r=S.dr||{p:'mes'},Y=t.getFullYear(),M=t.getMonth(),D=t.getDate(),wd=(t.getDay()+6)%7;if(r.p==='cus'&&r.a&&r.b)return [r.a,r.b];if(r.p==='hoje')return [iso(t),iso(t)];
+ if(r.p==='ont'){const y=new Date(Y,M,D-1);return [iso(y),iso(y)]}
+ if(r.p==='sem')return [iso(new Date(Y,M,D-wd)),iso(t)];
+ if(r.p==='semp')return [iso(new Date(Y,M,D-wd-7)),iso(new Date(Y,M,D-wd-1))];
+ if(r.p==='mesp')return [iso(new Date(Y,M-1,1)),iso(new Date(Y,M,0))];
+ if(r.p==='mes'||!r.p)return [iso(new Date(Y,M,1)),iso(t)];const n={'7d':7,'14d':14,'30d':30}[r.p]||7;const a=new Date(t);a.setDate(t.getDate()-n+1);return [iso(a),iso(t)]}
+/* ---------- Meta ao vivo (ads.json: estrutura ativa + métricas diárias por anúncio) ---------- */
+const LT={diag:'DIAG360',web:'WEB',temp:'TEMPCOM',ia:'IA'};let LV=null;
+const lvTag=n=>{const m=/^\s*\[[^\]]+\]_\[([^\]]+)\]/.exec(n||'');return m?m[1].toUpperCase():/^(Instagram post|Publica|Post do Instagram|Boost)/i.test(n||'')?'KLT-K':'OUTROS'};
+function lvLoad(){return fetch('ads.json?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(d&&d.camps){LV=d;dbar();if(S.mode==='funnel')fRender();else{MCACHE=null;mRender()}if(!fSel)panel()}}).catch(()=>{})}
+function lvM(fn){const o={sp:0,ld:0,imp:0,clk:0};if(!LV)return o;const [a,b]=range(),fx=+BG().fx||5;LV.rows.forEach(r=>{if(r.d>=a&&r.d<=b&&fn(r)){o.sp+=r.sp*fx;o.ld+=r.ld;o.imp+=r.imp;o.clk+=r.clk}});return o}
+function lvAds(f){const t=LT[f],o=[];if(!LV||!t)return o;LV.camps.filter(c=>c.tag===t).forEach(c=>c.sets.forEach(s=>s.ads.forEach(a=>o.push({...a,c,s}))));return o}
+function lvFind(id){if(!LV)return null;for(const c of LV.camps)for(const s of c.sets)for(const a of s.ads)if(a.id===id)return {...a,c,s};return null}
+const lvTxt=m=>m.sp?`${brl(m.sp)}${m.ld?` · ${m.ld} leads · CPL ${brl(m.sp/m.ld)}`:' · 0 leads'}`:'sem gasto no período';
+function lvBubbles(box){if(!LV)return;
+ visN().filter(n=>n.kind==='src'&&n.ic==='meta'&&LT[n.f]&&!box.querySelector('.lvg[data-f="'+n.f+'"]')).forEach(n=>{const ads=lvAds(n.f);if(!ads.length)return;
+  const fm=lvM(r=>lvTag(r.camp)===LT[n.f]),avg=fm.ld?fm.sp/fm.ld:0,sz=szOf(n),C=3,D=34,G=8,w=C*D+(C-1)*G;
+  const g=document.createElement('div');g.className='lvg';g.dataset.f=n.f;g.style.cssText=`left:${n.x+sz.w/2-w/2}px;top:${n.y+sz.h+64}px;width:${w}px`;
+  g.innerHTML=`<em>${ads.length} ativo${ads.length>1?'s':''} no Meta</em><div>`+ads.map(a=>{const m=lvM(r=>r.id===a.id),cpl=m.ld?m.sp/m.ld:0,k=!m.sp?'z':!m.ld?'r':avg&&cpl>avg*1.3?'r':avg&&cpl>avg?'y':'g';
+   return `<button class="lva ${k}${fSel&&fSel.t==='lv'&&fSel.id===a.id?' sel':''}" data-lv="${a.id}" title="${esc(a.nm)}\n${esc(lvTxt(m))}">${a.th?`<img src="${esc(a.th)}" alt="" onerror="this.remove()" referrerpolicy="no-referrer">`:''}${ic('meta')}</button>`}).join('')+'</div>';
+  g.onpointerdown=e=>e.stopPropagation();g.onclick=e=>{const b=e.target.closest('.lva');if(!b)return;fSelect({t:'lv',id:b.dataset.lv});document.body.classList.remove('hideR');$('#tR').classList.add('on');if(isMob())document.body.classList.add('openR');fRender()};
+  box.appendChild(g);const el=box.querySelector('.nd[data-id="'+n.id+'"]');if(el){let bt=0;el.querySelectorAll('*').forEach(c=>{const r=c.getBoundingClientRect();if(r.height)bt=Math.max(bt,r.bottom)});const gr=g.getBoundingClientRect(),k=gr.width/w;if(bt&&k>0)g.style.top=(n.y+sz.h+64+(bt-gr.top)/k+8)+'px'}})}
+function lvPanel(H,B){const a=lvFind(fSel.id);if(!a){fSel=null;return panel()}const m=lvM(r=>r.id===a.id),[d0,d1]=range();
+ H.innerHTML=`<div class="shd"><h3>Anúncio no Meta</h3>${closeBtn}</div>`;
+ B.innerHTML=`<div class="lvh">${a.th?`<img src="${esc(a.th)}" alt="" onerror="this.remove()" referrerpolicy="no-referrer">`:''}<div><b>${esc(a.nm)}</b><span class="lvon">ativo</span></div></div>
+ <div class="lvp"><span>Campanha</span>${esc(a.c.nm)}<span>Conjunto</span>${esc(a.s.nm)}${a.s.bud?` · ${us(a.s.bud)}/dia`:''}</div>
+ <div class="bsum"><div><span>Investido</span><b>${brl(m.sp)}</b></div><div><span>Leads</span><b>${rk(m.ld)}</b></div><div><span>CPL</span><b>${m.ld?brl(m.sp/m.ld):'-'}</b></div></div>
+ <div class="bsum"><div><span>Impressões</span><b>${rk(m.imp)}</b></div><div><span>Cliques</span><b>${rk(m.clk)}</b></div><div><span>CTR</span><b>${m.imp?(m.clk/m.imp*100).toFixed(2).replace('.',',')+'%':'-'}</b></div></div>
+ <p class="muted" style="margin-top:10px">${d0.split('-').reverse().join('/')} a ${d1.split('-').reverse().join('/')} · gasto convertido de USD pelo câmbio do orçamento · atualizado ${esc((LV.at||'').slice(11,16))} de ${esc((LV.at||'').slice(8,10)+'/'+(LV.at||'').slice(5,7))}</p>
+ <a class="btn" style="margin-top:12px" href="https://adsmanager.facebook.com/adsmanager/manage/ads?selected_ad_ids=${esc(a.id)}" target="_blank" rel="noopener">${ic('meta')}Abrir no Gerenciador</a>`}
+function adM(nm,f){const o={sp:0,ld:0,imp:0,clk:0};if(nm===null&&LV&&LT[f])return lvM(r=>lvTag(r.camp)===LT[f]);if(!S.adsData||!S.adsData.length)return o;
  if(nm===null){S.nodes.filter(n=>n.kind==='ad'&&n.f===f).forEach(n=>{const m=adM(n.nm);for(const k in o)o[k]+=m[k]});return o}
  const [a,b]=range();S.adsData.forEach(r=>{if(r.ad===nm&&r.d>=a&&r.d<=b){o.sp+=r.sp;o.ld+=r.ld;o.imp+=r.imp;o.clk+=r.clk}});return o}
-function dbar(){const r=S.dr||(S.dr={p:'7d',a:'',b:''});const [a,b]=range();
- $('#dbar').innerHTML=[['hoje','Hoje'],['7d','7 dias'],['14d','14 dias'],['30d','30 dias'],['mes','Este mês']].map(([k,l])=>`<button data-p="${k}" class="${r.p===k?'on':''}">${l}</button>`).join('')+
- `<i class="sep"></i><input type="date" id="dA" value="${a}"><span class="muted" style="font-size:12px">até</span><input type="date" id="dB" value="${b}"><i class="sep"></i><button class="imp" id="adImp" title="Importar export do Gerenciador de Anúncios (CSV, por dia e por anúncio)">${ic('plus')}${S.adsData&&S.adsData.length?'Atualizar anúncios':'Importar anúncios'}</button>`;
+const DRP=[['mes','Este mês'],['sem','Esta semana'],['hoje','Hoje'],['ont','Ontem'],['7d','Últimos 7 dias'],['14d','Últimos 14 dias'],['30d','Últimos 30 dias'],['semp','Semana passada'],['mesp','Mês passado'],['cus','Personalizado']];
+function dbar(){if(!S.dr||S.dr.v!==2)S.dr={p:'mes',a:'',b:'',v:2};const r=S.dr;const [a,b]=range();const br=d=>d.slice(8,10)+'/'+d.slice(5,7);
+ $('#dbar').innerHTML=`<label class="dsel"><span>Intervalo</span><select id="dP">${DRP.map(([k,l])=>`<option value="${k}"${r.p===k?' selected':''}>${l}</option>`).join('')}</select><svg class="i" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></label>`+
+ (r.p==='cus'?`<input type="date" id="dA" value="${a}"><span class="muted" style="font-size:12px">até</span><input type="date" id="dB" value="${b}">`:`<span class="drg">${a===b?br(a):br(a)+' a '+br(b)}</span>`)+`<i class="sep"></i><button class="imp" id="adImp" title="Importar export do Gerenciador de Anúncios (CSV, por dia e por anúncio)">${ic('plus')}${S.adsData&&S.adsData.length?'Atualizar anúncios':'Importar anúncios'}</button>${LV?`<span class="lvc" title="Estrutura e métricas puxadas da conta INVT"><i></i>Meta ao vivo · ${esc((LV.at||'').slice(11,16))}</span>`:''}`;
 }
-$('#dbar').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.id==='adImp'){$('#impAds').click();return}S.dr.p=b.dataset.p;save();dbar();fRender();panel()});
-$('#dbar').addEventListener('change',e=>{if(e.target.type!=='date')return;S.dr={p:'cus',a:$('#dA').value,b:$('#dB').value};if(S.dr.a>S.dr.b)[S.dr.a,S.dr.b]=[S.dr.b,S.dr.a];save();dbar();fRender();panel()});
+$('#dbar').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.id==='adImp'){$('#impAds').click();return}});
+$('#dbar').addEventListener('change',e=>{if(e.target.id==='dP'){const p=e.target.value,[a,b]=range();S.dr=p==='cus'?{p,a,b,v:2}:{p,a:'',b:'',v:2};save();dbar();fRender();panel();return}if(e.target.type!=='date')return;S.dr={p:'cus',a:$('#dA').value,b:$('#dB').value,v:2};if(S.dr.a>S.dr.b)[S.dr.a,S.dr.b]=[S.dr.b,S.dr.a];save();dbar();fRender();panel()});
 function num(v){v=String(v==null?'':v).replace(/[^\d,.\-]/g,'');if(!v)return 0;const c=v.lastIndexOf(','),d=v.lastIndexOf('.');if(c>d)v=v.replace(/\./g,'').replace(',','.');else v=v.replace(/,/g,'');return parseFloat(v)||0}
 function csv(t){const sep=(t.split('\n')[0].match(/;/g)||[]).length>(t.split('\n')[0].match(/,/g)||[]).length?';':',';const rows=[];let row=[],f='',q=false;
  for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=ch}else if(ch==='"')q=true;else if(ch===sep){row.push(f);f=''}else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&t[i+1]==='\n')i++;row.push(f);f='';if(row.some(x=>x.trim()))rows.push(row);row=[]}else f+=ch}
@@ -1168,10 +1217,15 @@ function deriveMind(){
   ns.sort((x,y)=>x.x-y.x).forEach(n=>{if(!inc.has(n.id)&&!nodes[n.id])add(n,bid)});ns.forEach(n=>{if(!nodes[n.id])add(n,bid)});
   const ads=S.nodes.filter(n=>n.f===b.k&&n.kind==='ad');if(ads.length){const g=mk('G:ad:'+b.k,'Anúncios · '+ads.length,bid,{grp:1,cl0:1});ads.forEach(n=>mk(n.id,n.nm,g,{nd:n}))}
   const ev=S.nodes.filter(n=>n.f===b.k&&n.kind==='ev').sort((x,y)=>(x.d||'').localeCompare(y.d||'')||x.y-y.y||x.x-y.x);
+  lvMind(mk,LV&&LT[b.k]?LV.camps.filter(c=>c.tag===LT[b.k]):[],bid,'G:lv:'+b.k);
   if(ev.length){const g=mk('G:tl:'+b.k,'Linha do tempo · '+ev.length+' lives',bid,{grp:1,cl0:1});ev.forEach(n=>mk(n.id,n.nm,g,{nd:n,lab:n.v}))}
  });
+ if(all&&LV){const ot=LV.camps.filter(c=>!Object.values(LT).includes(c.tag));if(ot.length){const bm=mk('B:meta','Meta Ads · outras campanhas','R',{c:'#0866ff',side:'L',cl0:1});const tg={};ot.forEach(c=>(tg[c.tag]=tg[c.tag]||[]).push(c));Object.entries(tg).forEach(([t,cs])=>lvMind(mk,cs,bm,'G:lv:'+t,t))}}
  return {root,nodes};
 }
+function lvMind(mk,cs,pid,gid,nm){if(!cs.length)return;const n=cs.reduce((a,c)=>a+c.sets.reduce((x,s)=>x+s.ads.length,0),0),ids=new Set(cs.map(c=>c.nm));
+ const g=mk(gid,(nm||'Meta ao vivo')+' · '+cs.length+' camp. · '+n+' anúncios',pid,{grp:1,cl0:1,lab:lvTxt(lvM(r=>ids.has(r.camp))).split(' · CPL')[0]});
+ cs.forEach(c=>{const ci=mk('LC:'+c.id,c.nm,g,{grp:1,lab:lvTxt(lvM(r=>r.camp===c.nm)).split(' · CPL')[0]});c.sets.forEach(s=>{const sids=new Set(s.ads.map(a=>a.id)),si=mk('LS:'+s.id,s.nm,ci,{grp:1,lab:s.bud?us(s.bud)+'/dia':''});s.ads.forEach(a=>mk('LA:'+a.id,a.nm,si,{grp:1,lab:lvTxt(lvM(r=>r.id===a.id)).split(' · CPL')[0]}))})})}
 const isReal=id=>!!nById(id);
 function mBoard(id){const m=MP();let n=m.nodes[id];while(n&&!n.bk)n=m.nodes[n.p];return n&&n.bk}
 const MC=['#0147FF','#21c7e8','#18c27a','#ffad33','#ff5a5a','#8f6bff','#ff2d55','#0ea5e9','#475569'];
@@ -1350,6 +1404,7 @@ $('#zHelp').onclick=()=>$('#help').classList.toggle('on');
 function help(){$('#help').innerHTML=S.mode==='mind'?`<h5>Atalhos do mapa</h5><div class="kbd"><kbd>Tab</kbd><span>novo filho</span><kbd>Enter</kbd><span>novo irmão</span><kbd>Digitar</kbd><span>edita o selecionado</span><kbd>2 cliques</kbd><span>edita</span><kbd>Del</kbd><span>apaga</span><kbd>Setas</kbd><span>navega</span><kbd>Alt ↑↓</kbd><span>reordena</span><kbd>Ctrl .</kbd><span>recolhe / expande</span><kbd>Arrastar</kbd><span>solta em outra etapa pra religar no funil</span><kbd>Scroll</kbd><span>zoom</span><kbd>Ctrl Z</kbd><span>desfaz</span></div>`:`<h5>Atalhos do funil</h5><div class="kbd"><kbd>Arrastar</kbd><span>elemento da biblioteca pro quadro</span><kbd>●+</kbd><span>puxa conexão; soltar no vazio cria a próxima etapa</span><kbd>2 cliques</kbd><span>abre a configuração</span><kbd>Del</kbd><span>apaga</span><kbd>Ctrl D</kbd><span>duplica</span><kbd>Ctrl Z</kbd><span>desfaz</span><kbd>Scroll</kbd><span>zoom · Shift+scroll move</span><kbd>Ctrl 0</kbd><span>enquadra</span></div>`}
 function closeSheets(){document.body.classList.remove('openL','openR')}
 function closeLib(){if(isMob())closeSheets();else{document.body.classList.add('hideL');$('#tL').classList.remove('on')}}
+$('#lTog').onclick=()=>$('#tL').click();
 $('#tL').onclick=()=>{if(isMob()){document.body.classList.toggle('openL');document.body.classList.remove('openR');return}document.body.classList.toggle('hideL');$('#tL').classList.toggle('on')};
 $('#tR').onclick=()=>{if(isMob()){document.body.classList.toggle('openR');document.body.classList.remove('openL');panel();return}document.body.classList.toggle('hideR');$('#tR').classList.toggle('on');panel()};
 $('#fab').onclick=()=>{if(S.mode==='mind'){mAdd(mSel||MP().root,true)}else{document.body.classList.toggle('openL');document.body.classList.remove('openR')}};
@@ -1372,7 +1427,7 @@ window.addEventListener('resize',()=>{posFTB();posMTB()});
 /* início */
 if(location.hash==='#mapa')S.mode='mind';else if(location.hash==='#funil')S.mode='funnel';
 if(isMob()){document.body.classList.remove('hideL','hideR')}else{document.body.classList.add('hideR');$('#tR').classList.remove('on')}
-lib();dbar();applyMode();
+lib();dbar();applyMode();lvLoad();
 if(!localStorage.getItem(KEY+'-fit')){localStorage.setItem(KEY+'-fit','1');setTimeout(fit,60)}else{setTimeout(()=>{CV().apply()},0)}
 </script>
 </body>
