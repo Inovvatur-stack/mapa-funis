@@ -30,6 +30,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .bsel .dot{position:absolute;left:12px;width:9px;height:9px;border-radius:3px;background:var(--b);pointer-events:none}
 .bsel:after{content:'';position:absolute;right:12px;top:13px;width:6px;height:6px;border-right:2px solid var(--mut);border-bottom:2px solid var(--mut);transform:rotate(45deg);pointer-events:none}
 .sp{flex:1}.hgrp{display:flex;gap:6px}
+.ur{display:flex}.ur .hb{border-radius:0;padding:0 10px}.ur .hb:first-child{border-radius:9px 0 0 9px}.ur .hb+.hb{border-radius:0 9px 9px 0;margin-left:-1px}.hb:disabled{opacity:.4;cursor:default}
 .hb{height:34px;padding:0 11px;border-radius:9px;border:1px solid var(--ln);font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;background:#fff;white-space:nowrap}
 .hb:hover{background:#f5f7fb}.hb.on{background:#eef3ff;border-color:#c9d7ff;color:var(--b)}
 .hb.pri{background:var(--b);border-color:var(--b);color:#fff}.hb.pri:hover{background:#0036cc}
@@ -50,7 +51,7 @@ body.hideL #lib,body.mind #lib{display:none}
 .shd h3{font:800 15px Manrope;flex:1}
 .x{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--mut)}.x:hover{background:#f1f3f8}
 .grab{display:none}
-.ltabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:0 12px}
+.ltabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 12px}
 .ltabs button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 2px;border-radius:9px;font-size:11px;font-weight:600;color:var(--mut)}
 .ltabs button svg{width:20px;height:20px}
 .ltabs button.on{background:#eef3ff;color:var(--b)}
@@ -168,9 +169,8 @@ path.tmp{fill:none;stroke:var(--b);stroke-width:2.4;stroke-dasharray:6 5}
 #bgs{position:absolute;left:0;top:0}
 #bgs .bg{position:absolute;border-radius:28px;background:color-mix(in srgb,var(--c) 5%,transparent);border:1.5px solid color-mix(in srgb,var(--c) 18%,transparent);pointer-events:none;transition:border-color .15s}
 #bgs .bg.hv{border-color:color-mix(in srgb,var(--c) 55%,transparent)}
-#bgs .bgh,#bgs .bge{position:absolute;pointer-events:auto;cursor:move}
-#bgs .bgh{left:0;right:0;top:0;height:max(50px,calc(26px*var(--k,1)));border-radius:28px 28px 0 0}
-#bgs .bge{--w:max(16px,calc(12px*var(--k,1)))}#bgs .bge.l{left:0;top:0;bottom:0;width:var(--w);transform:translateX(-50%)}#bgs .bge.r{right:0;top:0;bottom:0;width:var(--w);transform:translateX(50%)}#bgs .bge.b{left:0;right:0;bottom:0;height:var(--w);transform:translateY(50%)}
+#bgs .bgt{position:absolute;pointer-events:auto;cursor:move;--m:max(14px,calc(10px*var(--k,1)));margin:calc(-1*var(--m));padding:var(--m);border-radius:16px;transition:background .15s}
+#bgs .bg.hv .bgt{background:color-mix(in srgb,var(--c) 7%,transparent)}
 .nd.txt{cursor:move}
 #bgs .bg.off{background:rgba(120,128,145,.10);border-color:rgba(120,128,145,.22)}
 .el.sel{border-color:var(--b);color:var(--b)}
@@ -211,6 +211,7 @@ path.tmp{fill:none;stroke:var(--b);stroke-width:2.4;stroke-dasharray:6 5}
 .mn.edit{cursor:text;user-select:text;-webkit-user-select:text}
 .mn.drag{opacity:.75;z-index:5;pointer-events:none;box-shadow:0 14px 30px rgba(20,30,60,.25)}
 .mn.drop{box-shadow:0 0 0 2px #fff,0 0 0 4.5px #18c27a}
+.mn .cc{cursor:pointer;z-index:2;transition:transform .12s,opacity .12s}.mn .cc:hover{transform:scale(1.18)}.mn .cc.fx{opacity:.5;font-size:14px;line-height:1}.mn:hover .cc.fx,.mn.sel .cc.fx{opacity:1}
 .mn .cc{position:absolute;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:50%;background:#fff;border:1.5px solid var(--c);color:var(--c);font-size:10px;font-weight:800;display:grid;place-items:center}
 path.me{fill:none;stroke-linecap:round}
 .mn .mi{position:relative;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c);margin-right:7px;vertical-align:-5px}
@@ -239,12 +240,18 @@ body.mind #dbar{display:none}
 .dtb{position:sticky;top:0;z-index:2;display:flex;gap:4px;padding:12px 0 10px;background:#fff;flex-wrap:wrap}
 .dtb button{min-width:32px;height:30px;padding:0 8px;border:1px solid var(--ln);border-radius:8px;font:600 12.5px Inter;background:#fff}
 .dtb button:hover{background:#f3f6fc}.dtb .sp{flex:1}
-.bsum{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+.bsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:14px}
 .bsum div{border:1px solid var(--ln);border-radius:11px;padding:8px 10px;background:#fafbfd;min-width:0}
 .bsum span{display:block;font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
 .bsum b{font:800 14px Manrope;display:block;line-height:1.25}.bsum b.neg{color:#d62f2f}.bsum b.pos{color:#0c8f54}
 .btb{margin:14px 0 10px;border:1px solid var(--ln);border-radius:12px;overflow:hidden}
-.bth,.btr{display:grid;grid-template-columns:28px 1fr 78px 36px 26px;gap:6px;align-items:center;padding:6px 8px}
+.bth,.btr{display:grid;grid-template-columns:26px minmax(150px,1fr) 66px 34px 74px 62px 52px 44px 24px;gap:6px;align-items:center;padding:6px 8px}
+.bth span:nth-child(n+3){text-align:right}.bscroll{overflow-x:auto;margin:14px 0 10px}.bscroll .btb{margin:0;min-width:640px}
+.bn{font:600 12px Inter;text-align:right;font-variant-numeric:tabular-nums}.bu{color:var(--b)}.bx{display:flex;flex-direction:column;align-items:flex-end;gap:4px;font:700 12px Inter;font-variant-numeric:tabular-nums}.bx .in{width:100%}
+.bbar{display:block;width:100%;height:4px;border-radius:4px;background:#eef1f6;overflow:hidden}.bbar i{display:block;height:100%;background:linear-gradient(90deg,#0147FF,#4f8bff);border-radius:4px}
+.btot{background:#f5f7fb;font-size:12.5px}.btot b{font-weight:800}.btag{display:flex;gap:4px}.btag select{flex:1;min-width:0}
+.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.bsync{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;font-size:11.5px;color:var(--mut)}.bsync .btn{padding:5px 10px;font-size:12px}
+.bsum small{display:block;font-size:10.5px;color:var(--mut);margin-top:2px}.bsum small.neg{color:#d62f2f}.bsum small.pos{color:#0c8f54}
 .bth{background:#f5f7fb;font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
 .btr{border-top:1px solid var(--ln)}.btr.off{background:#fafafa}.btr.off .bnm,.btr.off .bv,.btr.off .bp{opacity:.5}
 .btr .in{padding:6px 8px;font-size:12.5px}
@@ -287,6 +294,7 @@ body.mind #dbar{display:none}
 /* mobile */
 @media (max-width:760px){
  :root{--hd:100px}
+ .row4{grid-template-columns:1fr 1fr}
  #top{flex-wrap:wrap;height:var(--hd);align-content:center;padding:6px 10px;gap:7px}
  .brand small,#saved,.hb .t{display:none}
  .brand{order:1}.bsel{order:2;flex:1;min-width:0}.bsel select{width:100%;max-width:none}
@@ -319,8 +327,8 @@ body.mind #dbar{display:none}
  <div class="hgrp">
   <button class="hb on" id="tL" title="Elementos"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="t">Elementos</span></button>
   <button class="hb on" id="tR" title="Painel"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/></svg><span class="t">Painel</span></button>
-  <button class="hb" id="bUndo" title="Desfazer (Ctrl+Z)"><svg class="i" viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></button>
   <button class="hb" id="bMore" title="Arquivo"><svg class="i" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg><span class="t">Arquivo</span></button>
+  <div class="ur"><button class="hb" id="bUndo" title="Voltar (Ctrl+Z)" disabled><svg class="i" viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></button><button class="hb" id="bRedo" title="Avançar (Ctrl+Shift+Z)" disabled><svg class="i" viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></svg></button></div>
  </div>
 </header>
 <main>
@@ -424,7 +432,7 @@ const E=[
  ['dq','grp','volta pro Web','a',1]
 ];
 
-const VER='v-15.10-13h29';
+const VER='v-15.10-13h43';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uid=()=>Math.random().toString(36).slice(2,9);
@@ -433,6 +441,7 @@ const clone=o=>JSON.parse(JSON.stringify(o));
 
 /* ---------- icons (desenho próprio) ---------- */
 const IC={
+ ttl:'<path d="M5 6V4h14v2M12 4v16M9 20h6"/>',
  meta:'<path d="M2.5 15.5c0-4.5 2.2-8.5 5-8.5 3.6 0 5.4 10 9.2 10 2.3 0 4.3-2 4.3-5s-1.8-5-4.1-5c-3.8 0-5.8 10-9.4 10C4.8 17 2.5 16.8 2.5 15.5z"/>',
  insta:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/>',
  yt:'<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>',
@@ -524,6 +533,7 @@ function pageSVG(v,c){
 
 /* ---------- catálogo ---------- */
 const CAT=[
+ ['fun','Funil','ttl',[['ttl','#0147FF','Título do funil']]],
  ['src','Tráfego','meta',[
   ['meta','#1877f2','Meta Ads'],['insta','#e1306c','Instagram'],['yt','#ff0000','YouTube Ads'],['google','#34a853','Google Ads'],['tiktok','#111111','TikTok'],['mail','#ff5a5a','E-mail / Base'],['wa','#25d366','WhatsApp'],['organic','#7a5af8','Orgânico'],['rotate','#ff8a00','Remarketing'],['link','#64748b','Link direto'],['user','#0ea5e9','Indicação']]],
  ['page','Páginas','page',[
@@ -643,10 +653,12 @@ function mergeOld(src){ // traz da versão anterior: copy, anúncios, links, not
  if(o.adsData&&o.adsData.length&&!(S.adsData||[]).length){S.adsData=o.adsData;if(o.dr)S.dr=o.dr}
  return n;
 }
-let hist=[],saveT;
-function snap(){hist.push(JSON.stringify(S));if(hist.length>60)hist.shift()}
+let hist=[],fut=[],saveT;
+function snap(){hist.push(JSON.stringify(S));if(hist.length>60)hist.shift();fut=[];hBtns()}
+function hBtns(){const u=$('#bUndo'),r=$('#bRedo');if(u)u.disabled=!hist.length;if(r)r.disabled=!fut.length}
 function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}const s=$('#saved');s.classList.add('on');clearTimeout(s._t);s._t=setTimeout(()=>s.classList.remove('on'),1200)},250)}
-function undo(){if(!hist.length)return;S=JSON.parse(hist.pop());fSel=null;mSel=null;MCACHE=null;save();applyMode();}
+function undo(){if(!hist.length)return;fut.push(JSON.stringify(S));S=JSON.parse(hist.pop());fSel=null;mSel=null;MCACHE=null;save();applyMode();hBtns()}
+function redo(){if(!fut.length)return;hist.push(JSON.stringify(S));S=JSON.parse(fut.pop());fSel=null;mSel=null;MCACHE=null;save();applyMode();hBtns()}
 
 /* ---------- viewport genérico (pan, zoom, pinça) ---------- */
 function mkView(cv,stage,key,opt){
@@ -663,7 +675,7 @@ function mkView(cv,stage,key,opt){
   P.set(e.pointerId,{x:e.clientX,y:e.clientY});
   if(P.size===2){const [a,b]=[...P.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y),s:st().s};pan=null;opt.onPinch&&opt.onPinch();return}
   if(e.target.closest('.nd,.mn,.port,.el,path.hit'))return;
-  if(e.target.closest('.bgh,.bge'))return;
+  if(e.target.closest('.bgt'))return;
   if(e.pointerType==='mouse'&&e.button!==0&&e.button!==1)return;
   pan={x:e.clientX,y:e.clientY,ox:st().x,oy:st().y,m:false};cv.classList.add('panning');
  });
@@ -721,7 +733,8 @@ function drawBgs(){const box=$('#bgs');if(!box)return;box.innerHTML='';const vs=
  S.boards.forEach(b=>{const ns=vs.filter(n=>n.f===b.k);if(!ns.length)return;let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   ns.forEach(n=>{const r=nRect(n);x0=Math.min(x0,r.x);y0=Math.min(y0,r.y);x1=Math.max(x1,r.x+r.w);y1=Math.max(y1,r.y+r.h)});
   const d=document.createElement('div');d.className='bg'+(b.on===false?' off':'');d.dataset.k=b.k;d.style.cssText=`left:${x0-P}px;top:${y0-P}px;width:${x1-x0+P*2}px;height:${y1-y0+P*2}px;--c:${b.col}`;
-  d.innerHTML='<i class="bgh"></i><i class="bge l"></i><i class="bge r"></i><i class="bge b"></i>';d.querySelectorAll('i').forEach(h=>{h.dataset.k=b.k;h.title='Arraste pela borda ou pelo topo pra mover o funil';h.onpointerenter=()=>d.classList.add('hv');h.onpointerleave=()=>d.classList.remove('hv')});box.appendChild(d)})}
+  const tn=ns.find(n=>n.id===b.k+'_title');if(tn){const r=nRect(tn),h=document.createElement('i');h.className='bgt';h.dataset.k=b.k;h.title='Arraste aqui pra mover o funil inteiro';h.style.cssText=`left:${r.x-x0+P}px;top:${r.y-y0+P}px;width:${r.w}px;height:${r.h}px`;h.onpointerenter=()=>d.classList.add('hv');h.onpointerleave=()=>d.classList.remove('hv');d.appendChild(h);
+   const te=$(`#nds .nd[data-id="${tn.id}"]`);if(te){te.onpointerenter=()=>d.classList.add('hv');te.onpointerleave=()=>d.classList.remove('hv')}}box.appendChild(d)})}
 const EMID={};
 function drawEdges(){
  const g=$('#eg'),lab=$('#elab');g.innerHTML='';lab.innerHTML='';const ids=new Set(visN().map(n=>n.id));
@@ -739,7 +752,7 @@ cvF.addEventListener('pointerdown',e=>{
  const port=e.target.closest('.port');
  if(port){e.stopPropagation();const id=port.closest('.nd').dataset.id;const tmp=document.createElementNS('http://www.w3.org/2000/svg','path');tmp.setAttribute('class','tmp');$('#eg').appendChild(tmp);link={id,tmp};cvF.setPointerCapture(e.pointerId);return}
  const ed=e.target.closest('path.hit,.el');if(ed){fSelect({t:'e',id:ed.dataset.id});return}
- const bgE=e.target.closest('.bgh,.bge');if(bgE){grpDrag(bgE.dataset.k,e,1);return}
+ const bgE=e.target.closest('.bgt');if(bgE){grpDrag(bgE.dataset.k,e,1);return}
  const nd=e.target.closest('.nd');if(!nd)return;
  const n=nById(nd.dataset.id);fSelect({t:'n',id:n.id},true);
  if(n.kind==='txt'&&n.id.endsWith('_title')&&FUNB(n.f)){grpDrag(n.f,e);return}
@@ -771,10 +784,14 @@ cvF.addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect
 cvF.addEventListener('drop',e=>{e.preventDefault();const d=e.dataTransfer.getData('text/plain');if(!d)return;try{const [k,i]=JSON.parse(d);const w=VF.world(e.clientX,e.clientY);addNode(k,i,w.x,w.y)}catch(err){}});
 function catItem(k,i){const c=CAT.find(x=>x[0]===k);return c[3][i]}
 function addNode(kind,i,cx,cy,from){
+ if(kind==='fun')return addFunil(cx,cy);
  const [icn,col,nm]=catItem(kind,i);const isNote=icn==='note'&&kind==='off';const kk=isNote?'note':kind;const sz=szOf({kind:kk,ic:icn});
  snap();const n={id:'n'+uid(),f:S.board==='all'?'all':S.board,kind:kk,ic:icn,col,nm:isNote?'Escreva sua nota':nm,v:'',s:'',stt:'',st:'',url:'',com:[],up:[],top:[],bot:[],copy:{},ads:[],...(icn==='ab'?{vars:[{l:'A',p:50},{l:'B',p:50}]}:{}),x:Math.round(cx-sz.w/2),y:Math.round(cy-sz.h/2)};
  S.nodes.push(n);if(from)S.edges.push({id:uid(),a:from,b:n.id,l:'',st:''});save();fSelect({t:'n',id:n.id});if(isMob())closeSheets();return n;
 }
+function addFunil(cx,cy){snap();const k='b'+uid(),col=MC[S.boards.length%MC.length],nm='Novo funil';S.boards.push({k,nm,col,on:true,syn:1});
+ const n={id:k+'_title',f:k,kind:'txt',ic:'',col,nm,s:'',x:Math.round(cx-150),y:Math.round(cy-22)};S.nodes.push(n);
+ if(S.board!=='all'){S.board=k;n.x=30;n.y=40}save();boards();fRender();pTab='tit';fSelect({t:'n',id:n.id});openPanel('tit');setTimeout(()=>{const i=$('#f_nm');if(i){i.focus();i.select()}},60);if(isMob())closeSheets();return n}
 /* menu rápido ao soltar a conexão no vazio */
 const QK=[['page',0],['page',1],['page',4],['page',5],['page',6],['page',2],['off',0],['off',1],['off',5],['off',3],['act',1]];
 function quick(x,y,from){
@@ -817,7 +834,7 @@ const closeBtn=`<button class="x" onclick="closePanel()">${ic('x')}</button>`;
 function closePanel(){if(isMob())document.body.classList.remove('openR');else{document.body.classList.add('hideR');$('#tR').classList.remove('on')}}
 function panel(){
  const H=$('#phead'),B=$('#pbody');document.body.classList.remove('wideP','wideB');
- if(!fSel){H.innerHTML=`<div class="shd"><h3>Visão geral</h3>${closeBtn}</div><div class="ptabs">${[['fun','Funis'],['orc','Orçamento']].map(([k,l])=>`<button data-o="${k}" class="${oTab===k?'on':''}">${l}</button>`).join('')}</div>`;H.querySelectorAll('[data-o]').forEach(x=>x.onclick=()=>{oTab=x.dataset.o;panel()});if(oTab==='orc'){document.body.classList.toggle('wideB',!isMob());B.innerHTML=budUI();bindBud()}else{B.innerHTML=overview();bindOverview()}return}
+ if(!fSel){H.innerHTML=`<div class="shd"><h3>Visão geral</h3>${closeBtn}</div><div class="ptabs">${[['fun','Funis'],['orc','Orçamento']].map(([k,l])=>`<button data-o="${k}" class="${oTab===k?'on':''}">${l}</button>`).join('')}</div>`;H.querySelectorAll('[data-o]').forEach(x=>x.onclick=()=>{oTab=x.dataset.o;panel()});if(oTab==='orc'){document.body.classList.toggle('wideP',!isMob());B.innerHTML=budUI();bindBud()}else{B.innerHTML=overview();bindOverview()}return}
  if(fSel.t==='e'){const e=S.edges.find(z=>z.id===fSel.id);if(!e){fSel=null;return panel()}const A=nById(e.a),Bn=nById(e.b);
   H.innerHTML=`<div class="shd"><h3>Conexão</h3>${closeBtn}</div>`;
   B.innerHTML=`<p class="muted">${esc(A.nm)} → ${esc(Bn.nm)}</p>${F('Texto na seta',inp('e_l',e.l,'ex.: 45%'))}
@@ -836,7 +853,7 @@ function panel(){
  if(ttl&&pTab!=='tit'){if(pTab==='doc'){document.body.classList.toggle('wideP',wideOn&&!isMob());B.innerHTML=docUI(ttl);bindDoc(ttl)}else if(pTab==='ck'){B.innerHTML=ckUI(ttl);bindCk(ttl)}else{B.innerHTML=orcUI(ttl);bindOrc(ttl)}return}
  if(simple){B.innerHTML=F(n.kind==='note'?'Nota':'Título',n.kind==='note'?ta('f_nm',n.nm):inp('f_nm',n.nm))+(n.kind==='txt'?F('Subtítulo',inp('f_s',n.s))+F('Cor',`<input type="color" class="in" id="f_col" value="${n.col}" style="height:40px;padding:4px">`):'')+`<div style="margin-top:20px"><button class="btn red" onclick="delSel()">${ic('trash')}Apagar</button></div>`;bindFields(n);return}
  if(pTab==='cfg'){
-  B.innerHTML=F('Nome',inp('f_nm',n.nm))+F('Tipo',`<select class="in" id="f_tp">${CAT.map(([k,lab,,items])=>`<optgroup label="${lab}">${items.map((it,i)=>`<option value="${k}|${i}" ${(n.kind===k||(k==='off'&&n.kind==='note'))&&n.ic===it[0]?'selected':''}>${it[2]}</option>`).join('')}</optgroup>`).join('')}</select>`)+
+  B.innerHTML=F('Nome',inp('f_nm',n.nm))+F('Tipo',`<select class="in" id="f_tp">${CAT.filter(c=>c[0]!=='fun').map(([k,lab,,items])=>`<optgroup label="${lab}">${items.map((it,i)=>`<option value="${k}|${i}" ${(n.kind===k||(k==='off'&&n.kind==='note'))&&n.ic===it[0]?'selected':''}>${it[2]}</option>`).join('')}</optgroup>`).join('')}</select>`)+
   F('URL da página',`<div class="row" style="gap:6px"><input class="in" id="f_url" value="${esc(n.url)}" placeholder="https://"><button class="btn" style="flex:none" onclick="nById(fSel.id).url&&window.open(nById(fSel.id).url,'_blank')">${ic('ext')}</button></div>`)+
   (n.kind==='act'&&n.ic==='ab'?abEd(n):'')+
   F('Detalhe',ta('f_s',n.s,'texto curto abaixo do nome')).replace('<textarea','<textarea style="min-height:56px"')+
@@ -874,7 +891,7 @@ function FUNB(k){return S.boards.find(b=>b.k===k)}
 function kindName(n){if(n.kind==='txt')return 'Título';if(n.kind==='note')return 'Nota';const c=CAT.find(x=>x[0]===n.kind);const it=c&&c[3].find(i=>i[0]===n.ic);return (c?c[1]:'')+(it?' · '+it[2]:'')}
 function bindFields(n){
  const map={f_nm:'nm',f_url:'url',f_s:'s',f_col:'col'};
- Object.entries(map).forEach(([id,k])=>{const el=$('#'+id);if(!el)return;el.onfocus=()=>snap();el.oninput=()=>{n[k]=el.value;save();fRender();if(k==='nm'){const h=$('.phd h4');h&&(h.textContent=el.value.split('\n')[0])}}});
+ Object.entries(map).forEach(([id,k])=>{const el=$('#'+id);if(!el)return;el.onfocus=()=>snap();el.oninput=()=>{n[k]=el.value;const sb=n.kind==='txt'&&S.boards.find(b=>b.syn&&b.k+'_title'===n.id);if(sb&&(k==='nm'||k==='col')){sb[k]=k==='nm'?el.value.split('\n')[0]:el.value;clearTimeout(sb._t);setTimeout(boards,200)}save();fRender();if(k==='nm'){const h=$('.phd h4');h&&(h.textContent=el.value.split('\n')[0])}}});
  const tp=$('#f_tp');if(tp)tp.onchange=()=>{snap();const [k,i]=tp.value.split('|');const [icn,col]=catItem(k,+i);const isNote=k==='off'&&icn==='note';const nk=isNote?'note':k;const o=szOf(n),sz=szOf({kind:nk,ic:icn});const cx=n.x+o.w/2,cy=n.y+o.h/2;n.kind=nk;n.ic=icn;if(icn==='ab'&&!n.vars)n.vars=[{l:'A',p:50},{l:'B',p:50}];if(n.kind!=='page')n.col=col;n.x=Math.round(cx-sz.w/2);n.y=Math.round(cy-sz.h/2);save();fRender();panel()};
  const ff=$('#f_f');if(ff)ff.onchange=()=>{snap();n.f=ff.value;save();fRender();panel()};
  ['h','sub','body','prova','oferta','cta'].forEach(k=>{const el=$('#c_'+k);if(!el)return;el.onfocus=()=>snap();el.oninput=()=>{n.copy[k]=el.value;save();fRender()}});
@@ -884,36 +901,49 @@ function bindFields(n){
 /* ---------- orçamento por funil: planilha no painel, verba aparece no título de cada funil ---------- */
 let oTab='fun',wideOn=false;
 const BUD0=[['WEB Lives semanal','web',6000,1],['TEMPCOM Template comercial','temp',4000,1],['DIAG360 Diagnostico do turismo','diag',3000,1],['KLT-K Impulsionar','',2000,1],['IAs Turismo low ticket','ia',1000,1],['WEB Diario','',1000,1],['KLT-T Depoimento remarketing','',180,1],['AULA 01 - Iniciante','',0,0],['AULA 02 - Avançado','',0,0],['VSL','yt',0,0],['KPL','',0,0]];
-function BG(){if(!S.budget||!Array.isArray(S.budget.rows))S.budget={mes:'12/10',meta:17000,rows:BUD0.map(([nm,f,v,on])=>({nm,f:FUNB(f)?f:'',v,on:!!on}))};return S.budget}
+function BG(){if(!S.budget||!Array.isArray(S.budget.rows))S.budget={mes:'12/10',meta:17000,rows:BUD0.map(([nm,f,v,on])=>({nm,f:FUNB(f)?f:'',v,on:!!on}))};const g=S.budget;if(!g.ini)g.ini='2026-10-12';if(!g.fim)g.fim='2026-11-11';if(!g.fx)g.fx=5;g.rows.forEach(r=>{if(r.t==null)r.t=budTag(r.nm)});return g}
+function budTag(nm){const s=(nm||'').toLowerCase();const t=[[/diag/,'DIAG360'],[/tempcom|template/,'TEMPCOM'],[/web.*di[aá]rio/,'WEB-DIARIO'],[/web|webinar|lives?\b/,'WEB'],[/klt.?t|depoimento/,'KLT-T'],[/klt.?k|impulsion/,'KLT-K'],[/\bias?\b|isca ia|low ticket/,'IA']].find(([r])=>r.test(s));return t?t[1]:''}
+let SP=null,spT=0;function spLoad(force){if(!force&&SP&&Date.now()-spT<6e5)return Promise.resolve(SP);return fetch('spend.json?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(d&&d.days){SP=d;spT=Date.now()}return SP}).catch(()=>SP)}
+function budUsd(t){if(!SP||!t)return null;const g=BG();let a=0;for(const[d,v]of Object.entries(SP.days))if(d>=g.ini&&d<=g.fim)a+=+v[t]||0;return a}
+function budDias(){const g=BG(),hj=iso(new Date()),i=hj>g.ini?hj:g.ini;const n=Math.round((new Date(g.fim+'T12:00')-new Date(i+'T12:00'))/864e5)+1;return Math.max(1,n)}
+function budExe(r){const u=budUsd(r.t);return u==null?(+r.x||0):u*(+BG().fx||5)}
+const us=v=>'$'+Math.round(+v||0).toLocaleString('pt-BR');const rk=v=>Math.round(+v||0).toLocaleString('pt-BR');
 const rs=v=>'R$ '+Math.round(+v||0).toLocaleString('pt-BR');
 const pc=v=>{const t=+BG().meta||budTot();return t?Math.round((+v||0)/t*100)+'%':'0%'}; // % sobre a meta, igual à planilha
 function budTot(){return BG().rows.reduce((a,r)=>a+(r.on?+r.v||0:0),0)}
 function budOf(k){return BG().rows.reduce((a,r)=>a+(r.on&&r.f===k?+r.v||0:0),0)}
 function budDif(){const d=budTot()-(+BG().meta||0);return d===0?['bate com a meta','pos']:d>0?[rs(d)+' acima','neg']:[rs(-d)+' livre','pos']}
-function guessF(nm){const s=nm.toLowerCase();const t=[[/diag/,'diag'],[/tempcom|template/,'temp'],[/\bias?\b|isca ia/,'ia'],[/web.*(live|semanal)|webinar/,'web'],[/vsl|youtube/,'yt'],[/preg/,'preg'],[/live turis/,'turis'],[/agend/,'agd'],[/membro/,'memb']].find(([r])=>r.test(s));return t&&FUNB(t[1])?t[1]:''}
+function budGuess(nm){const s=nm.toLowerCase();const t=[[/diag/,'diag'],[/tempcom|template/,'temp'],[/\bias?\b|isca ia/,'ia'],[/web.*(live|semanal)|webinar/,'web'],[/vsl|youtube/,'yt'],[/preg/,'preg'],[/live turis/,'turis'],[/agend/,'agd'],[/membro/,'memb']].find(([r])=>r.test(s));return t&&FUNB(t[1])?t[1]:''}
 function budParse(txt){const out=[];txt.split(/\r?\n/).forEach(l=>{if(!l.trim())return;const c=l.split(/\t|;/).map(x=>x.trim());
  const nm=c.find(x=>x&&!/^[✅❌✔✖☑☐️\s]+$/.test(x)&&!/^R\$|^[\d.,]+\s*%?$/.test(x));if(!nm||/^(total|funil)\b/i.test(nm))return;
  const vc=[...c].reverse().find(x=>/^R\$\s*[\d.,]+$|^[\d.]+(,\d+)?$/.test(x));const v=vc?Math.round(+vc.replace(/R\$|\s|\./g,'').replace(',','.')||0):0;
  out.push({nm,v,on:/❌|✖|☐/.test(l)?false:(/✅|✔|☑/.test(l)||v>0)})});return out}
-function budUI(){const g=BG(),t=budTot(),[dt,dc]=budDif();
- return `<p class="muted" style="margin-top:12px">Mexe aqui e a verba aparece sozinha do lado do nome de cada funil no quadro. O % é calculado sobre a meta, igual à planilha.</p>
- <div class="row"><div>${F('Planilha / mês',inp('bg_mes',g.mes,'ex.: 12/10'))}</div><div>${F('Meta de verba',`<input class="in" id="bg_meta" inputmode="numeric" value="${+g.meta||0}">`)}</div></div>
- <div class="bsum"><div><span>Previsto ativo</span><b id="bg_tot">${rs(t)}</b></div><div><span>Meta</span><b id="bg_mt">${rs(g.meta)}</b></div><div><span>Diferença</span><b id="bg_dif" class="${dc}">${dt}</b></div></div>
- <div class="btb"><div class="bth"><span></span><span>Funil</span><span style="text-align:right">Previsto</span><span style="text-align:right">%</span><span></span></div>
- ${g.rows.map((r,i)=>`<div class="btr${r.on?'':' off'}" data-i="${i}"><button class="bon" data-on="${i}" title="${r.on?'Ativo · clique pra inativar':'Inativo · clique pra ativar'}">${r.on?'✅':'❌'}</button><div class="bnm"><input class="in" data-k="nm" value="${esc(r.nm)}" placeholder="nome na planilha"><select class="in" data-k="f"><option value="">sem funil no mapa</option>${S.boards.map(b=>`<option value="${b.k}" ${r.f===b.k?'selected':''}>${esc(b.nm||'Funil sem nome')}</option>`).join('')}</select></div><input class="in bv" data-k="v" inputmode="numeric" value="${+r.v||0}"><span class="bp">${r.on?pc(+r.v||0,t):'0%'}</span><button class="x" data-del="${i}" title="Remover linha">${ic('trash')}</button></div>`).join('')}</div>
+function budCalc(r){const ex=r.on?budExe(r):0,fa=r.on?Math.max(0,(+r.v||0)-ex):0,d=budDias(),fd=fa/d;return {ex,fa,fd,ud:fd/(+BG().fx||5),p:(+r.v||0)?Math.min(100,ex/(+r.v)*100):0}}
+function budRowC(r){const c=budCalc(r),au=budUsd(r.t)!=null;return `<span class="bx">${au?`<b>${rk(c.ex)}</b>`:`<input class="in bv" data-k="x" inputmode="numeric" value="${+r.x||0}" title="Sem tag Meta: digita o executado">`}<i class="bbar"><i style="width:${c.p.toFixed(0)}%"></i></i></span><span class="bn">${rk(c.fa)}</span><span class="bn">${rk(c.fd)}</span><span class="bn bu">${us(c.ud)}</span>`}
+function budSum(){const g=BG();let ex=0,fa=0;g.rows.forEach(r=>{if(!r.on)return;const c=budCalc(r);ex+=c.ex;fa+=c.fa});return {ex,fa,fd:fa/budDias()}}
+function budUI(){const g=BG(),t=budTot(),[dt,dc]=budDif(),m=budSum(),tags=[...new Set(['WEB','WEB-DIARIO','TEMPCOM','DIAG360','IA','KLT-T','KLT-K',...(SP?Object.keys(SP.tags||{}):[])])];
+ return `<p class="muted" style="margin-top:12px">Previsto você digita. Executado vem do gasto real da conta Meta da INVT (US$ × câmbio) dentro do período, puxado pela tag da campanha. Falta por dia usa os dias que sobram até o fim.</p>
+ <div class="row4"><div>${F('Início',`<input class="in" type="date" id="bg_ini" value="${g.ini}">`)}</div><div>${F('Fim',`<input class="in" type="date" id="bg_fim" value="${g.fim}">`)}</div><div>${F('Meta de verba',`<input class="in" id="bg_meta" inputmode="numeric" value="${+g.meta||0}">`)}</div><div>${F('Câmbio US$',`<input class="in" id="bg_fx" inputmode="decimal" value="${String(g.fx).replace('.',',')}">`)}</div></div>
+ <div class="bsum"><div><span>Previsto ativo</span><b id="bg_tot">${rs(t)}</b><small id="bg_dif" class="${dc}">${dt}</small></div><div><span>Executado</span><b id="bg_ex">${rs(m.ex)}</b><small>${t?Math.round(m.ex/t*100):0}% do previsto</small></div><div><span>Quanto falta</span><b id="bg_fa">${rs(m.fa)}</b><small>${budDias()} dias até o fim</small></div><div><span>Falta por dia</span><b id="bg_fd">${rs(m.fd)}</b><small>${us(m.fd/(+g.fx||5))} por dia</small></div></div>
+ <div class="bsync"><span id="bg_at">${SP?'Meta atualizado '+new Date(SP.at).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'Carregando gasto da Meta...'}</span><button class="btn" id="bg_rf">${ic('rotate')}Atualizar</button></div>
+ <div class="bscroll"><div class="btb"><div class="bth"><span></span><span>Funil</span><span>Previsto</span><span>%</span><span>Executado</span><span>Falta</span><span>Falta/dia</span><span>Dólar</span><span></span></div>
+ ${g.rows.map((r,i)=>`<div class="btr${r.on?'':' off'}" data-i="${i}"><button class="bon" data-on="${i}" title="${r.on?'Ativo · clique pra inativar':'Inativo · clique pra ativar'}">${r.on?'✅':'❌'}</button><div class="bnm"><input class="in" data-k="nm" value="${esc(r.nm)}" placeholder="nome na planilha"><div class="btag"><select class="in" data-k="f" title="Funil no mapa"><option value="">sem funil no mapa</option>${S.boards.map(b=>`<option value="${b.k}" ${r.f===b.k?'selected':''}>${esc(b.nm||'Funil sem nome')}</option>`).join('')}</select><select class="in" data-k="t" title="Tag da campanha na Meta"><option value="">sem tag Meta</option>${tags.map(x=>`<option ${r.t===x?'selected':''}>${x}</option>`).join('')}</select></div></div><input class="in bv" data-k="v" inputmode="numeric" value="${+r.v||0}"><span class="bp">${r.on?pc(+r.v||0,t):'0%'}</span>${budRowC(r)}<button class="x" data-del="${i}" title="Remover linha">${ic('trash')}</button></div>`).join('')}
+ <div class="btr btot"><span></span><b>Total</b><b class="bn">${rk(t)}</b><span class="bp">${pc(t)}</span><b class="bn">${rk(m.ex)}</b><b class="bn">${rk(m.fa)}</b><b class="bn">${rk(m.fd)}</b><b class="bn bu">${us(m.fd/(+g.fx||5))}</b><span></span></div></div></div>
  <button class="btn" id="bg_add">${ic('plus')}Nova linha</button>
  <details class="bpaste"><summary>Colar da planilha</summary><p class="muted" style="margin:8px 0">Seleciona as linhas no Google Sheets (status, funil, %, previsto), copia e cola aqui. A linha TOTAL é ignorada e ❌ entra como inativo. O funil do mapa de cada linha é mantido.</p><textarea class="in" id="bg_txt" placeholder="✅	WEB Lives semanal	35%	R$ 6.000"></textarea><button class="btn pri" id="bg_imp" style="margin-top:8px">Substituir tabela</button></details>`}
 let budT;
-function budLive(){const t=budTot(),[dt,dc]=budDif(),g=BG();$('#bg_tot').textContent=rs(t);$('#bg_mt').textContent=rs(g.meta);const d=$('#bg_dif');d.textContent=dt;d.className=dc;
- $('#pbody').querySelectorAll('.btr').forEach(el=>{const r=g.rows[+el.dataset.i];el.querySelector('.bp').textContent=r.on?pc(+r.v||0,t):'0%'});clearTimeout(budT);budT=setTimeout(()=>{if(S.mode==='funnel')fRender()},250)}
+function budLive(){const t=budTot(),[dt,dc]=budDif(),g=BG(),m=budSum();$('#bg_tot').textContent=rs(t);const d=$('#bg_dif');d.textContent=dt;d.className=dc;$('#bg_ex').textContent=rs(m.ex);$('#bg_fa').textContent=rs(m.fa);$('#bg_fd').textContent=rs(m.fd);
+ $('#pbody').querySelectorAll('.btr[data-i]').forEach(el=>{const r=g.rows[+el.dataset.i];el.querySelector('.bp').textContent=r.on?pc(+r.v||0,t):'0%';const c=budCalc(r),n=el.querySelectorAll('.bn');n[0].textContent=rk(c.fa);n[1].textContent=rk(c.fd);n[2].textContent=us(c.ud);const br=el.querySelector('.bbar i');br&&(br.style.width=c.p.toFixed(0)+'%')});clearTimeout(budT);budT=setTimeout(()=>{if(S.mode==='funnel')fRender()},250)}
 function bindBud(){const g=BG(),B=$('#pbody');
- [['bg_mes','mes'],['bg_meta','meta']].forEach(([id,k])=>{const el=$('#'+id);el.onfocus=()=>snap();el.oninput=()=>{g[k]=k==='meta'?+el.value.replace(/\D/g,'')||0:el.value;save();budLive()}});
- B.querySelectorAll('.btr').forEach(el=>{const r=g.rows[+el.dataset.i];el.querySelectorAll('[data-k]').forEach(x=>{x.onfocus=()=>snap();x.oninput=x.onchange=()=>{const k=x.dataset.k;r[k]=k==='v'?+x.value.replace(/\D/g,'')||0:x.value;save();budLive()}})});
+ [['bg_meta','meta'],['bg_fx','fx'],['bg_ini','ini'],['bg_fim','fim']].forEach(([id,k])=>{const el=$('#'+id);el.onfocus=()=>snap();el.oninput=()=>{g[k]=k==='meta'?+el.value.replace(/\D/g,'')||0:k==='fx'?(+el.value.replace(',','.')||5):el.value;save();budLive()};if(k!=='meta')el.onchange=()=>{save();panel()}});
+ $('#bg_rf').onclick=()=>{$('#bg_at').textContent='Buscando...';spLoad(1).then(()=>{if(oTab==='orc'&&!fSel)panel()})};
+ if(!SP)spLoad().then(d=>{if(d&&oTab==='orc'&&!fSel)panel();else if(!d)$('#bg_at')&&($('#bg_at').textContent='Gasto da Meta indisponível agora')});
+ B.querySelectorAll('.btr').forEach(el=>{const r=g.rows[+el.dataset.i];el.querySelectorAll('[data-k]').forEach(x=>{x.onfocus=()=>snap();x.oninput=()=>{const k=x.dataset.k;r[k]=k==='v'||k==='x'?+x.value.replace(/\D/g,'')||0:x.value;save();budLive()};if(x.tagName==='SELECT')x.onchange=()=>{r[x.dataset.k]=x.value;save();x.dataset.k==='t'?panel():budLive()}})});
  B.querySelectorAll('[data-on]').forEach(x=>x.onclick=()=>{snap();const r=g.rows[+x.dataset.on];r.on=!r.on;save();fRender();panel()});
  B.querySelectorAll('[data-del]').forEach(x=>x.onclick=()=>{snap();g.rows.splice(+x.dataset.del,1);save();fRender();panel()});
- $('#bg_add').onclick=()=>{snap();g.rows.push({nm:'',f:'',v:0,on:true});save();panel();const l=B.querySelectorAll('.btr [data-k="nm"]');l.length&&l[l.length-1].focus()};
+ $('#bg_add').onclick=()=>{snap();g.rows.push({nm:'',f:'',t:'',v:0,on:true});save();panel();const l=B.querySelectorAll('.btr [data-k="nm"]');l.length&&l[l.length-1].focus()};
  $('#bg_imp').onclick=()=>{const rows=budParse($('#bg_txt').value);if(!rows.length){alert('Não achei linhas com funil e valor. Cola as colunas da planilha (funil e previsto).');return}
-  snap();g.rows=rows.map(r=>{const o=g.rows.find(x=>x.nm.trim().toLowerCase()===r.nm.toLowerCase());return {...r,f:o?o.f:guessF(r.nm)}});save();fRender();panel()};
+  snap();g.rows=rows.map(r=>{const o=g.rows.find(x=>x.nm.trim().toLowerCase()===r.nm.toLowerCase());return {...r,f:o?o.f:budGuess(r.nm),t:o&&o.t!=null?o.t:budTag(r.nm)}});save();fRender();panel()};
 }
 function pills(b){const v=budOf(b.k),c=ckP(b),o=[];
  if(v)o.push(`<span class="pil bud" data-op="orc" onpointerdown="event.stopPropagation()" title="Verba prevista · clique pra ver">${rs(v)} · ${pc(v,budTot())}</span>`);
@@ -987,7 +1017,7 @@ function overview(){
  return `<p class="muted">${S.boards.length} funis · ${act} ativos · clique pra abrir</p><div class="ovb" id="ovBud">${ic('money')}<span>Orçamento ${esc(BG().mes||'')}<br>previsto nos funis ativos</span><b>${rs(budTot())}</b></div>`+S.boards.map(b=>{const ns=S.nodes.filter(n=>n.f===b.k&&n.kind!=='txt'&&n.kind!=='note');const ads=ns.filter(n=>n.kind==='ad').length;const m=adM(null,b.k);
   return `<div class="fc${b.on===false?' off':''}${S.board===b.k?' cur':''}" data-k="${b.k}"><i style="background:${b.col}"></i><div class="fi"><b>${esc(b.nm)}</b><span>${m.sp?`${brl(m.sp)} · ${m.ld} leads${m.ld?' · CPL '+brl(m.sp/m.ld):''}`:`${ns.filter(n=>n.kind!=='ev'&&n.kind!=='ad').length} etapas${ads?' · '+ads+' anúncios':''}${ns.some(n=>n.kind==='ev')?' · '+ns.filter(n=>n.kind==='ev').length+' lives':''}`}${(v=>v?` · <em>verba ${rs(v)} (${pc(v,budTot())})</em>`:'')(budOf(b.k))}${(c=>c.d?` · checklist ${c.d}/${c.t}`:'')(ckP(b))}</span></div><button class="tg${b.on===false?'':' on'}" data-t="${b.k}" title="${b.on===false?'Inativo · clique pra ativar':'Ativo · clique pra desativar'}"><i></i></button></div>`}).join('')+
  `<button class="btn" style="margin-top:12px" id="ovAll">${ic('grid')}Ver todos no quadro</button>
- <label class="fl">Como usar</label><div class="kbd"><kbd>Clique</kbd><span>no card abre os detalhes</span><kbd>●+</kbd><span>bolinha do card: puxa uma conexão</span><kbd>Clique</kbd><span>na seta: editar ou apagar</span><kbd>Del</kbd><span>apaga o selecionado</span><kbd>Scroll</kbd><span>zoom · Shift+scroll move pro lado</span><kbd>Arrastar</kbd><span>o fundo move a tela</span><kbd>Borda/topo</kbd><span>do quadro do funil: move o funil inteiro</span></div>
+ <label class="fl">Como usar</label><div class="kbd"><kbd>Clique</kbd><span>no card abre os detalhes</span><kbd>●+</kbd><span>bolinha do card: puxa uma conexão</span><kbd>Clique</kbd><span>na seta: editar ou apagar</span><kbd>Del</kbd><span>apaga o selecionado</span><kbd>Scroll</kbd><span>zoom · Shift+scroll move pro lado</span><kbd>Arrastar</kbd><span>o fundo move a tela</span><kbd>Título</kbd><span>do funil (ou em volta dele): arrasta o funil inteiro</span></div>
  <p class="ver">${VER}</p>`;
 }
 function setOn(k,v){const b=FUNB(k);if(!b)return;snap();b.on=v;save();boards();if(S.mode==='funnel'){fRender();panel()}else mRender()}
@@ -1036,18 +1066,18 @@ $('#impAds').onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new Fi
  if(/^\s*[\[{]/.test(t)){let j=JSON.parse(t);j=Array.isArray(j)?j:(j.data||[]);const ks=Object.keys(j[0]||{});importAds([ks,...j.map(o=>ks.map(k=>o[k]))])}else importAds(csv(t))}catch(err){alert('Não consegui ler esse arquivo.')}};rd.readAsText(f);e.target.value=''};
 
 /* ---------- biblioteca ---------- */
-let lCat='src';
+let lCat='all';
 function lib(){
- $('#ltabs').innerHTML=CAT.map(([k,l,icn])=>`<button data-k="${k}" class="${lCat===k?'on':''}">${ic(icn)}${l}</button>`).join('');
+ $('#ltabs').innerHTML=[['all','Todos','grid'],...CAT].map(([k,l,icn])=>`<button data-k="${k}" class="${lCat===k?'on':''}">${ic(icn)}${l}</button>`).join('');
  const q=$('#q').value.trim().toLowerCase();
- const thumb=(k,it)=>{const [icn,col]=it;if(k==='page')return `<div class="pg">${pageSVG(icn,col)}</div>`;
+ const thumb=(k,it)=>{const [icn,col]=it;if(k==='fun')return `<div class="mini" style="width:44px;height:30px;border-radius:8px;background:#eef3ff;color:${col};font:800 15px Manrope">Aa</div>`;if(k==='page')return `<div class="pg">${pageSVG(icn,col)}</div>`;
   if(k==='src')return `<div class="mini" style="width:40px;height:40px;border-radius:50%;background:${col}">${icx(icn)}</div>`;
   if(k==='act')return `<div class="mini" style="width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid ${col};color:${col}">${icx(icn)}</div>`;
   if(icn==='note')return `<div class="mini" style="width:40px;height:34px;border-radius:3px;background:#fff6c7;color:#a07d00">${ic('note')}</div>`;
   return `<div class="mini" style="width:40px;height:40px;border-radius:12px;background:#fff;border:2px solid ${col};color:${col}">${icx(icn)}</div>`};
- const cats=q?CAT:CAT.filter(c=>c[0]===lCat);
+ const all=q||lCat==='all';const cats=all?CAT:CAT.filter(c=>c[0]===lCat);
  $('#lg').innerHTML=cats.map(([k,l,,items])=>{const its=items.map((it,i)=>[it,i]).filter(([it])=>!q||it[2].toLowerCase().includes(q));if(!its.length)return '';
-  return (q?`<div class="lcat">${l}</div>`:'')+its.map(([it,i])=>`<div class="li" draggable="true" data-k="${k}" data-i="${i}"><div class="lth">${thumb(k,it)}</div>${esc(it[2])}</div>`).join('')}).join('')||'<p class="muted" style="grid-column:1/-1;padding:10px">Nada encontrado.</p>';
+  return (all?`<div class="lcat">${l}</div>`:'')+its.map(([it,i])=>`<div class="li" draggable="true" data-k="${k}" data-i="${i}"><div class="lth">${thumb(k,it)}</div>${esc(it[2])}</div>`).join('')}).join('')||'<p class="muted" style="grid-column:1/-1;padding:10px">Nada encontrado.</p>';
  $('#lg').querySelectorAll('.li').forEach(el=>{el.ondragstart=e=>{e.dataTransfer.setData('text/plain',JSON.stringify([el.dataset.k,+el.dataset.i]));e.dataTransfer.effectAllowed='copy'};
   el.onclick=()=>{const c=VF.center();addNode(el.dataset.k,+el.dataset.i,c.x+(Math.random()*60-30),c.y+(Math.random()*60-30))}});
 }
@@ -1093,7 +1123,7 @@ function mRender(){
  [['R',1],['L',-1]].forEach(([sd,dir])=>{const k=rk.filter(c=>(m.nodes[c].side||'R')===sd);const t=k.reduce((a,c)=>a+m.nodes[c]._H,0)+VG*2*Math.max(0,k.length-1);let y=-t/2;k.forEach(c=>{const cn=m.nodes[c];place(c,dir>0?r._x+r._w+HG*1.4:r._x-HG*1.4,y+cn._H/2,dir);y+=cn._H+VG*2})});
  let paths='';
  vis.forEach(id=>{const n=m.nodes[id];el[id].style.left=n._x+'px';el[id].style.top=n._y+'px';
-  if(n.cl&&n.ch.length){const b=document.createElement('i');b.className='cc';b.textContent=desc(id);b.style[n._d>0?'right':'left']='-28px';el[id].appendChild(b)}
+  if(n.p&&n.ch.length){const b=document.createElement('i');b.className=n.cl?'cc':'cc fx';b.dataset.f=id;b.title=n.cl?'Expandir':'Recolher';b.textContent=n.cl?desc(id):'−';b.style[n._d>0?'right':'left']='-28px';el[id].appendChild(b)}
   if(n.p){const p=m.nodes[n.p],dir=n._d;const ax=p.p?(dir>0?p._x+p._w:p._x):p._x+p._w/2,ay=p._y+p._h/2;const bx=dir>0?n._x:n._x+n._w,by=n._y+n._h/2;const k=(bx-ax)*.55;const d=depth(id);
    paths+=`<path class="me" d="M${ax} ${ay}C${ax+k} ${ay} ${bx-k} ${by} ${bx} ${by}" stroke="${bColor(id)}" stroke-width="${d===1?3:2}" stroke-opacity="${d===1?.9:.7}"/>`}});
  svg.innerHTML=paths;posMTB();
@@ -1149,6 +1179,7 @@ function commitEdit(cancel){
 }
 /* ponteiro no mapa: seleção, arrastar pra reorganizar, toque duplo edita */
 let mDrag=null,lastTap={id:null,t:0};
+cvM.addEventListener('pointerdown',e=>{const f=e.target.closest('.cc[data-f]');if(!f)return;e.stopPropagation();e.preventDefault();mSnapSet(f.dataset.f,'cl',!MP().nodes[f.dataset.f].cl)},true);
 cvM.addEventListener('pointerdown',e=>{
  const nd=e.target.closest('.mn');if(!nd||nd.classList.contains('edit'))return;
  const id=nd.dataset.id;const now=Date.now();
@@ -1200,7 +1231,8 @@ document.addEventListener('keydown',e=>{
   return;
  }
  if(typing)return;
- if(mod&&e.key.toLowerCase()==='z'){e.preventDefault();undo();return}
+ if(mod&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();return}
+ if(mod&&e.key.toLowerCase()==='y'){e.preventDefault();redo();return}
  if(e.key==='0'&&mod){e.preventDefault();fit();return}
  if(S.mode==='funnel'){
   if((e.key==='Delete'||e.key==='Backspace')&&fSel){e.preventDefault();delSel()}
@@ -1245,7 +1277,7 @@ function fit(){
  else{const m=MP();let x1=1e9,y1=1e9,x2=-1e9,y2=-1e9;document.querySelectorAll('#mns .mn').forEach(e=>{const n=m.nodes[e.dataset.id];x1=Math.min(x1,n._x);y1=Math.min(y1,n._y);x2=Math.max(x2,n._x+n._w);y2=Math.max(y2,n._y+n._h)});VM.fitBox({x:x1-30,y:y1,w:x2-x1+60,h:y2-y1},1.15)}
 }
 const CV=()=>S.mode==='funnel'?VF:VM;
-$('#zIn').onclick=()=>CV().zoomBy(1.2);$('#zOut').onclick=()=>CV().zoomBy(1/1.2);$('#zFit').onclick=fit;$('#bUndo').onclick=undo;
+$('#zIn').onclick=()=>CV().zoomBy(1.2);$('#zOut').onclick=()=>CV().zoomBy(1/1.2);$('#zFit').onclick=fit;$('#bUndo').onclick=undo;$('#bRedo').onclick=redo;
 $('#zHelp').onclick=()=>$('#help').classList.toggle('on');
 function help(){$('#help').innerHTML=S.mode==='mind'?`<h5>Atalhos do mapa</h5><div class="kbd"><kbd>Tab</kbd><span>novo filho</span><kbd>Enter</kbd><span>novo irmão</span><kbd>Digitar</kbd><span>edita o selecionado</span><kbd>2 cliques</kbd><span>edita</span><kbd>Del</kbd><span>apaga</span><kbd>Setas</kbd><span>navega</span><kbd>Alt ↑↓</kbd><span>reordena</span><kbd>Ctrl .</kbd><span>recolhe / expande</span><kbd>Arrastar</kbd><span>solta em outra etapa pra religar no funil</span><kbd>Scroll</kbd><span>zoom</span><kbd>Ctrl Z</kbd><span>desfaz</span></div>`:`<h5>Atalhos do funil</h5><div class="kbd"><kbd>Arrastar</kbd><span>elemento da biblioteca pro quadro</span><kbd>●+</kbd><span>puxa conexão; soltar no vazio cria a próxima etapa</span><kbd>2 cliques</kbd><span>abre a configuração</span><kbd>Del</kbd><span>apaga</span><kbd>Ctrl D</kbd><span>duplica</span><kbd>Ctrl Z</kbd><span>desfaz</span><kbd>Scroll</kbd><span>zoom · Shift+scroll move</span><kbd>Ctrl 0</kbd><span>enquadra</span></div>`}
 function closeSheets(){document.body.classList.remove('openL','openR')}
