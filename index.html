@@ -574,7 +574,7 @@ const E=[
  ['dq','grp','volta pro Web','a',1]
 ];
 
-const VER='v-15.10-18h47';
+const VER='v-15.10-18h51';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uid=()=>Math.random().toString(36).slice(2,9);
@@ -691,7 +691,7 @@ const CAT=[
   ['phone','#0147FF','SDR / Ligação'],['meet','#0147FF','Reunião closer'],['live','#ff2d55','Live / Evento'],['wa','#25d366','Mensagem WhatsApp'],['slides','#8f6bff','Aula / Slides'],['money','#18c27a','Venda'],['rotate','#ffad33','Recuperação'],['mail','#ff5a5a','Sequência e-mail'],['gift','#ff8a00','Bônus'],['user','#475569','Pessoa'],['zap','#ff5a5a','Pregão / Oferta'],['note','#e8b500','Nota'],['wagrp','#25d366','Grupo WhatsApp'],['waapi','#1877f2','API Oficial'],['wanon','#25d366','API não oficial'],['wacall','#25d366','Ligação WhatsApp'],['waaud','#25d366','Áudio WhatsApp'],['wabr','#25d366','Lista de transmissão'],['clock','#64748b','Espera']]]
 ];
 const SZ={ai:{w:64,h:64},form:{w:70,h:88},ad:{w:52,h:52},ev:{w:200,h:170},src:{w:64,h:64},page:{w:96,h:120},act:{w:64,h:64},off:{w:64,h:64},txt:{w:300,h:44},note:{w:200,h:90},mark:{w:60,h:60}};
-let CARD=localStorage.getItem('invt-estilo')!=='icone';const CDK=['src','off','act','ai','page'],CW=150;
+let CARD=localStorage.getItem('invt-estilo2')==='card';const CDK=['src','off','act','ai','page'],CW=150;
 const isCard=n=>CARD&&CDK.includes(n.kind);
 function nMet(n){let met='';if(n.kind==='src'&&n.ic==='meta'){const m=adM(null,n.f);if(m.sp)met=brl(m.sp)+' · '+m.ld+' leads'+(m.ld?' · CPL '+brl(m.sp/m.ld):'')}if(n.kind==='act'&&n.ic==='ab')met=(n.vars||[]).map(v=>`${v.l} ${v.p}%`).join(' · ');return met}
 const nLn=a=>(a||[]).filter(x=>String(x).trim());
@@ -1686,7 +1686,7 @@ function pinRender(){let box=$('#pinz');if(!box){box=document.createElement('div
   el.style.left=Math.max(0,Math.min(p.x,innerWidth-80))+'px';el.style.top=Math.max(0,Math.min(p.y,innerHeight-40))+'px';el.style.width=p.w+'px';el.style.height=p.h+'px';
   el.querySelector('b').textContent=(String(n.nm||'').split('\n')[0]||'Nota').slice(0,60);const t=el.querySelector('textarea');if(document.activeElement!==t&&t.value!==n.nm)t.value=n.nm||''})}
 $('#zSty').classList.toggle('on',CARD);
-$('#zSty').onclick=()=>{CARD=!CARD;localStorage.setItem('invt-estilo',CARD?'card':'icone');$('#zSty').classList.toggle('on',CARD);if(S.mode==='funnel')fRender()};
+$('#zSty').onclick=()=>{CARD=!CARD;localStorage.setItem('invt-estilo2',CARD?'card':'icone');$('#zSty').classList.toggle('on',CARD);if(S.mode==='funnel')fRender()};
 
 /* ---------- ao vivo: edição colaborativa + cursores (relay MQTT, conteúdo criptografado com a chave do link) ---------- */
 const LIVE=(()=>{
