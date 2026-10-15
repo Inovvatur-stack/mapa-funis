@@ -35,6 +35,8 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .hb:hover{background:#f5f7fb}.hb.on{background:#eef3ff;border-color:#c9d7ff;color:var(--b)}
 .hb.pri{background:var(--b);border-color:var(--b);color:#fff}.hb.pri:hover{background:#0036cc}
 #saved{display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 11px;border:1px solid var(--ln);border-radius:99px;background:#fff;font-size:12px;font-weight:600;color:var(--mut);white-space:nowrap}#saved i{width:9px;height:9px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.16);transition:background .2s}#saved.ing i{background:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.18);animation:svp .8s infinite alternate}#saved.err i{background:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.16)}@keyframes svp{to{opacity:.35}}@media(max-width:760px){#saved b{display:none}#saved{padding:0 9px}}
+#nds .mk{position:absolute;top:-13px;right:-13px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;border:2px solid #fff;box-shadow:0 2px 6px rgba(20,30,60,.25);z-index:3;pointer-events:none}#nds .mk svg{width:16px;height:16px;stroke-width:3}#nds .mk.ok{background:#16a34a}#nds .mk.no{background:#dc2626}
+#ftb button.mok.on{color:#16a34a;background:#eafaf0}#ftb button.mno.on{color:#dc2626;background:#fdecec}
 #ftb .msn{font-size:12px;font-weight:700;padding:0 8px;white-space:nowrap;align-self:center;line-height:1}
 #marq{position:absolute;border:1.5px solid #0147FF;background:rgba(1,71,255,.07);border-radius:4px;pointer-events:none;z-index:40;display:none}.cvs.mouse{cursor:default}.cvs.mouse.panning{cursor:grabbing}#zoom #zMouse.on,#zoom #zHand.on{color:#0147FF;background:#eef3ff}
 /* layout */
@@ -571,7 +573,7 @@ const E=[
  ['dq','grp','volta pro Web','a',1]
 ];
 
-const VER='v-15.10-18h26';
+const VER='v-15.10-18h45';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uid=()=>Math.random().toString(36).slice(2,9);
@@ -701,7 +703,7 @@ function msSet(set){fSel=null;MS=set;if(MS.size===1){const id=[...MS][0];MS=new 
 function msUI(){document.querySelectorAll('#nds .nd').forEach(d=>d.classList.toggle('sel',MS.has(d.dataset.id)));drawEdges();posFTB();if(MS.size>1)panel()}
 function msFTB(tb){const els=[...MS].map(id=>$(`#nds .nd[data-id="${id}"]`)).filter(Boolean);if(!els.length){tb.classList.remove('on');return}
  let L=1e9,T=1e9,Rr=-1e9;els.forEach(el=>{const b=(el.querySelector('.cdx,.sh,.tt,.nt')||el).getBoundingClientRect();L=Math.min(L,b.left);T=Math.min(T,b.top);Rr=Math.max(Rr,b.right)});
- const r=$('#cwrap').getBoundingClientRect();tb.innerHTML=`<span class="msn">${MS.size} células</span><i class="sep"></i><button data-a="dup" title="Duplicar (Ctrl+D)">${ic('copy')}<span>Duplicar</span></button><button data-a="del" title="Apagar (Del)">${ic('trash')}<span>Apagar</span></button>`;
+ const r=$('#cwrap').getBoundingClientRect();tb.innerHTML=`<span class="msn">${MS.size} células</span><i class="sep"></i><button data-a="ok" class="mok${msMk()==='ok'?' on':''}" title="Marcar com check">${ic('check')}</button><button data-a="no" class="mno${msMk()==='no'?' on':''}" title="Marcar com X">${ic('x')}</button><i class="sep"></i><button data-a="dup" title="Duplicar (Ctrl+D)">${ic('copy')}<span>Duplicar</span></button><button data-a="del" title="Apagar (Del)">${ic('trash')}<span>Apagar</span></button>`;
  tb.style.left=((L+Rr)/2-r.left)+'px';tb.style.top=Math.max(54,T-r.top-10)+'px';tb.classList.add('on')}
 function marqStart(e){if(TOOL!=='mouse'||spaceDn||e.button===1||e.pointerType==='touch')return false;
  const c=cvF.getBoundingClientRect();let el=$('#marq');if(!el){el=document.createElement('div');el.id='marq';cvF.appendChild(el)}
@@ -950,8 +952,8 @@ function nodeHTML(n){
  const ln=a=>(a||[]).filter(x=>String(x).trim()).map(x=>`<span>${esc(x)}</span>`).join(''),tp=ln(n.top),bt=ln(n.bot);
  const bd=[];if(n.copy&&Object.values(n.copy).some(Boolean))bd.push('Copy');if(n.ads&&n.ads.length)bd.push(n.ads.length+' ad'+(n.ads.length>1?'s':''));
  if(isCard(n)){const r=cardRect(n),fl=['meet','money'].includes(n.ic)&&n.kind!=='page';const ci=n.kind==='page'?`<div class="pw">${pageSVG(n.ic,c)}</div>`:icx(n.ic);
-  return `<div class="cdx${fl?' fl':''}" style="left:${r.x-n.x}px;top:${r.y-n.y}px;width:${r.w}px;height:${r.h}px">${tp?`<div class="la">${tp}</div>`:''}<div class="ci">${ci}</div><b>${esc(n.nm)}</b>${met?`<div class="m">${esc(met)}</div>`:''}${n.s?`<div class="s">${esc(n.s)}</div>`:''}${bt?`<div class="lbx">${bt}</div>`:''}${bd.length?`<div class="bds">${bd.map(b=>`<span>${b}</span>`).join('')}</div>`:''}${n.url?`<a class="cop" href="${esc(/^https?:\/\//i.test(n.url)?n.url:'https://'+n.url)}" target="_blank" rel="noopener" onpointerdown="event.stopPropagation()" title="Abrir página">${ic('ext')}</a>`:''}<div class="port" title="Arraste para conectar">${ic('plus')}</div></div>`}
- return `${tp?`<div class="la">${tp}</div>`:''}<div class="sh">${sh}${bd.length?`<div class="bds">${bd.map(b=>`<span>${b}</span>`).join('')}</div>`:''}<div class="port" title="Arraste para conectar">${ic('plus')}</div></div>
+  return `<div class="cdx${fl?' fl':''}" style="left:${r.x-n.x}px;top:${r.y-n.y}px;width:${r.w}px;height:${r.h}px">${tp?`<div class="la">${tp}</div>`:''}<div class="ci">${ci}</div><b>${esc(n.nm)}</b>${met?`<div class="m">${esc(met)}</div>`:''}${n.s?`<div class="s">${esc(n.s)}</div>`:''}${bt?`<div class="lbx">${bt}</div>`:''}${bd.length?`<div class="bds">${bd.map(b=>`<span>${b}</span>`).join('')}</div>`:''}${n.url?`<a class="cop" href="${esc(/^https?:\/\//i.test(n.url)?n.url:'https://'+n.url)}" target="_blank" rel="noopener" onpointerdown="event.stopPropagation()" title="Abrir página">${ic('ext')}</a>`:''}${mkB(n)}<div class="port" title="Arraste para conectar">${ic('plus')}</div></div>`}
+ return `${tp?`<div class="la">${tp}</div>`:''}<div class="sh">${sh}${mkB(n)}${bd.length?`<div class="bds">${bd.map(b=>`<span>${b}</span>`).join('')}</div>`:''}<div class="port" title="Arraste para conectar">${ic('plus')}</div></div>
  <div class="lb"><div>${opH}</div><b>${esc(n.nm)}</b>${met?`<div class="m">${esc(met)}</div>`:''}${n.s?`<div class="s">${esc(n.s)}</div>`:''}${bt?`<div class="lbx">${bt}</div>`:''}</div>`;
 }
 function fRender(){
@@ -1061,14 +1063,17 @@ function posFTB(){
   tb.style.left=(c.left-r.left+v.x+pt.x*v.s)+'px';tb.style.top=Math.max(54,c.top-r.top+v.y+pt.y*v.s-10)+'px';tb.classList.add('on');return}
  const el=$(`#nds .nd[data-id="${fSel.id}"]`);if(!el){tb.classList.remove('on');return}
  const n=nById(fSel.id),r=$('#cwrap').getBoundingClientRect(),b=(el.querySelector('.cdx,.sh,.tt,.nt')||el).getBoundingClientRect();
- if(n.kind==='note'){const on=!!(S.pins&&S.pins[n.id]);tb.innerHTML=`<button data-a="pin" class="${on?'on':''}" title="Fixar na tela">${ic('pin')}<span>${on?'Fixada':'Fixar'}</span></button><button data-a="cfg" title="Abrir nota">${ic('edit')}</button><i class="sep"></i><button data-a="dup" title="Duplicar">${ic('copy')}</button><button data-a="del" title="Apagar">${ic('trash')}</button>`}else
- tb.innerHTML=`<button data-a="cfg" title="Configurar">${ic('gear')}</button><button data-a="copy" title="Copy">${ic('edit')}</button>${n.url?`<button data-a="url" title="Abrir página">${ic('ext')}</button>`:''}<i class="sep"></i><button data-a="dup" title="Duplicar">${ic('copy')}</button><button data-a="del" title="Apagar">${ic('trash')}</button>`;
+ if(n.kind==='note'){const on=!!(S.pins&&S.pins[n.id]);tb.innerHTML=`<button data-a="pin" class="${on?'on':''}" title="Fixar na tela">${ic('pin')}<span>${on?'Fixada':'Fixar'}</span></button><button data-a="cfg" title="Abrir nota">${ic('edit')}</button><i class="sep"></i><button data-a="ok" class="mok${n.mk==='ok'?' on':''}" title="Marcar com check">${ic('check')}</button><button data-a="no" class="mno${n.mk==='no'?' on':''}" title="Marcar com X">${ic('x')}</button><i class="sep"></i><button data-a="dup" title="Duplicar">${ic('copy')}</button><button data-a="del" title="Apagar">${ic('trash')}</button>`}else
+ tb.innerHTML=`<button data-a="cfg" title="Configurar">${ic('gear')}</button><button data-a="copy" title="Copy">${ic('edit')}</button>${n.url?`<button data-a="url" title="Abrir página">${ic('ext')}</button>`:''}<i class="sep"></i><button data-a="ok" class="mok${n.mk==='ok'?' on':''}" title="Marcar com check">${ic('check')}</button><button data-a="no" class="mno${n.mk==='no'?' on':''}" title="Marcar com X">${ic('x')}</button><i class="sep"></i><button data-a="dup" title="Duplicar">${ic('copy')}</button><button data-a="del" title="Apagar">${ic('trash')}</button>`;
  tb.style.left=(b.left-r.left+b.width/2)+'px';tb.style.top=Math.max(54,b.top-r.top)+'px';tb.classList.add('on');
 }
-$('#ftb').addEventListener('click',e=>{const b=e.target.closest('button');if(b&&MS.size>1){if(b.dataset.a==='dup')dupMulti();if(b.dataset.a==='del')delMulti();return}if(!b||!fSel)return;const a=b.dataset.a,n=nById(fSel.id);
+$('#ftb').addEventListener('click',e=>{const b=e.target.closest('button');if(b&&MS.size>1){if(b.dataset.a==='ok'||b.dataset.a==='no')setMk([...MS],b.dataset.a);if(b.dataset.a==='dup')dupMulti();if(b.dataset.a==='del')delMulti();return}if(!b||!fSel)return;const a=b.dataset.a,n=nById(fSel.id);
  if(a==='ecfg')openPanel('cfg');if(a==='edash'){const ed=S.edges.find(z=>z.id===fSel.id);if(ed){snap();ed.dash=ed.dash?0:1;save();drawEdges();posFTB()}}
- if(a==='pin'&&n)pinToggle(n.id);if(a==='cfg')openPanel('cfg');if(a==='copy')openPanel('copy');if(a==='url'&&n)window.open(n.url,'_blank');if(a==='dup')dupNode();if(a==='del')delSel()});
+ if((a==='ok'||a==='no')&&n)setMk([n.id],a);if(a==='pin'&&n)pinToggle(n.id);if(a==='cfg')openPanel('cfg');if(a==='copy')openPanel('copy');if(a==='url'&&n)window.open(n.url,'_blank');if(a==='dup')dupNode();if(a==='del')delSel()});
 function dupNode(){if(MS.size>1)return dupMulti();const n=nById(fSel.id);if(!n)return;snap();const c={...clone(n),id:'n'+uid(),x:n.x+40,y:n.y+40};S.nodes.push(c);if(S.pins&&S.pins[n.id])delete c.pin;save();fRender();fSelect({t:'n',id:c.id})}
+const mkB=n=>n.mk==='ok'||n.mk==='no'?`<i class="mk ${n.mk}">${ic(n.mk==='ok'?'check':'x')}</i>`:'';
+const msMk=()=>{const v=[...MS].map(id=>(nById(id)||{}).mk);return v.length&&v.every(x=>x===v[0])?v[0]:''};
+function setMk(ids,k){const ns=ids.map(nById).filter(Boolean);if(!ns.length)return;snap();const off=ns.every(n=>n.mk===k);ns.forEach(n=>{if(off)delete n.mk;else n.mk=k});save();const keep=new Set(MS);fRender();if(keep.size>1){MS=keep;msUI()}}
 function dupMulti(){snap();const map={},ids=[...MS];ids.forEach(id=>{const n=nById(id);if(!n)return;const c={...clone(n),id:'n'+uid(),x:n.x+40,y:n.y+40};map[id]=c.id;S.nodes.push(c)});
  S.edges.filter(e=>map[e.a]&&map[e.b]).forEach(e=>S.edges.push({...clone(e),id:uid(),a:map[e.a],b:map[e.b]}));fSel=null;MS=new Set(Object.values(map));save();fRender();msUI()}
 function delMulti(){snap();const d=MS;S.nodes=S.nodes.filter(n=>!d.has(n.id));S.edges=S.edges.filter(e=>!d.has(e.a)&&!d.has(e.b));MS=new Set();fSel=null;save();fRender();panel();$('#ftb').classList.remove('on')}
