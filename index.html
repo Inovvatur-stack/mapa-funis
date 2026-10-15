@@ -226,6 +226,44 @@ body.mind #dbar{display:none}
 #dbar .sep{width:1px;height:20px;background:var(--ln);margin:0 4px;flex:none}
 #dbar .imp{color:var(--b);display:flex;gap:5px;align-items:center}
 #dbar .imp svg{width:15px;height:15px}
+/* orçamento, copy doc, checklist */
+.nd.txt .tt .pil{font:700 12px Inter;padding:4px 10px;border-radius:20px;cursor:pointer;background:#eef3ff;color:var(--b)}
+.pil.bud{background:#fff2cc;color:#7a5200}.pil.ck{background:#e1f7ec;color:#0c8f54}.pil.cp{background:#f1eaff;color:#6b3fd6}.pil:hover{filter:brightness(.95)}
+.doc{border:1px solid var(--ln);border-radius:12px;padding:16px 18px;min-height:52vh;outline:none;font:400 14.5px/1.6 Inter;background:#fff}
+.doc:focus{border-color:#9db6ff;box-shadow:0 0 0 3px #e6edff}
+.doc h1{font:800 20px Manrope;margin:0 0 6px}.doc h2{font:800 16px Manrope;margin:18px 0 6px;color:var(--b)}.doc h3{font:700 14px Manrope;margin:12px 0 4px}
+.doc ul,.doc ol{padding-left:22px;margin:4px 0}.doc p{margin:4px 0}
+.dtb{position:sticky;top:0;z-index:2;display:flex;gap:4px;padding:12px 0 10px;background:#fff;flex-wrap:wrap}
+.dtb button{min-width:32px;height:30px;padding:0 8px;border:1px solid var(--ln);border-radius:8px;font:600 12.5px Inter;background:#fff}
+.dtb button:hover{background:#f3f6fc}.dtb .sp{flex:1}
+.bsum{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+.bsum div{border:1px solid var(--ln);border-radius:11px;padding:8px 10px;background:#fafbfd;min-width:0}
+.bsum span{display:block;font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.bsum b{font:800 14px Manrope;display:block;line-height:1.25}.bsum b.neg{color:#d62f2f}.bsum b.pos{color:#0c8f54}
+.btb{margin:14px 0 10px;border:1px solid var(--ln);border-radius:12px;overflow:hidden}
+.bth,.btr{display:grid;grid-template-columns:28px 1fr 78px 36px 26px;gap:6px;align-items:center;padding:6px 8px}
+.bth{background:#f5f7fb;font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.btr{border-top:1px solid var(--ln)}.btr.off{background:#fafafa}.btr.off .bnm,.btr.off .bv,.btr.off .bp{opacity:.5}
+.btr .in{padding:6px 8px;font-size:12.5px}
+.bnm{display:flex;flex-direction:column;gap:4px;min-width:0}.bnm select.in{padding:3px 6px;font-size:11.5px;color:var(--mut)}
+.bv{text-align:right}.bp{font:700 12px Inter;text-align:right}.bon{font-size:15px;line-height:1}
+.bpaste{margin-top:16px}.bpaste summary{cursor:pointer;font-weight:700;font-size:13px}
+.rob{margin-top:14px;padding:12px 14px;border-radius:12px;background:#f5f8ff;border:1px solid #dfe7fb;font-size:13px;line-height:1.5}
+.rob>b{font:800 13px Manrope;color:var(--b)}
+.rob .pri{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 4px}.rob .pri span{font:700 11.5px Inter;padding:4px 9px;border-radius:20px;background:#fff;border:1px solid var(--ln)}.rob .pri span.on{background:var(--b);color:#fff;border-color:var(--b)}
+.rob summary{cursor:pointer;font-size:12px;color:var(--mut);font-weight:600}
+.ckbar{height:7px;border-radius:5px;background:#edf0f5;margin-top:14px;overflow:hidden}.ckbar i{display:block;height:100%;background:#18c27a;border-radius:5px;transition:width .2s}
+.cks{border:1px solid var(--ln);border-radius:12px;margin-top:8px;padding:0 12px;background:#fff}.cks[open]{padding-bottom:12px}
+.cks summary{cursor:pointer;display:flex;align-items:center;gap:9px;padding:11px 0;font-weight:700;font-size:13.5px;list-style:none}
+.cks summary::-webkit-details-marker{display:none}
+.cks summary em{margin-left:auto;font:700 11.5px Inter;color:var(--mut);font-style:normal}
+.cks .cn{width:22px;height:22px;border-radius:50%;background:#eef3ff;color:var(--b);display:grid;place-items:center;font-size:11.5px;flex:none}
+.cks.done .cn{background:#18c27a;color:#fff}
+.cki{display:grid;gap:7px;padding-bottom:4px}.cki label{display:flex;gap:8px;align-items:center;font-size:13px;cursor:pointer}
+.cki input{width:16px;height:16px;accent-color:#18c27a;flex:none}
+.ovb{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:13px;margin-top:10px;background:#fff8e6;border:1px solid #f6e3b0;cursor:pointer}
+.ovb b{font:800 14px Manrope;white-space:nowrap}.ovb span{font-size:11.5px;color:#7a5200;flex:1}
+.fc .fi em{font-style:normal;font-weight:700;color:#7a5200}
 /* visão geral: funis */
 .fc{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid var(--ln);border-radius:13px;margin-top:8px;cursor:pointer;background:#fff;transition:background .15s}
 .fc:hover{background:#f7f9fd}
@@ -240,6 +278,8 @@ body.mind #dbar{display:none}
 @media (min-width:761px){
  #panel{position:absolute;right:14px;top:12px;width:360px;max-height:min(680px,calc(100% - 24px));border:1px solid var(--ln);border-radius:18px;box-shadow:0 26px 60px -14px rgba(15,25,50,.3),0 2px 6px rgba(15,25,50,.06);overflow:hidden;z-index:24;animation:pop .16s ease-out}
  #pbody{min-height:0}
+ body.wideB #panel{width:540px}
+ body.wideP #panel{width:min(780px,calc(100% - 28px));max-height:calc(100% - 24px)}
 }
 /* mobile */
 @media (max-width:760px){
@@ -381,7 +421,7 @@ const E=[
  ['dq','grp','volta pro Web','a',1]
 ];
 
-const VER='v-15.10-10h24';
+const VER='v-15.10-13h23';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uid=()=>Math.random().toString(36).slice(2,9);
@@ -643,7 +683,7 @@ const visN=()=>S.nodes.filter(n=>S.board==='all'||n.f===S.board);
 function bOf(n){const sz=szOf(n);return {x:n.x,y:n.y,w:sz.w,h:sz.h}}
 function nodeHTML(n){
  const c=n.col||'#0147FF';let sh='';
- if(n.kind==='txt'){const b=n.id.endsWith('_title')&&FUNB(n.f);return `<div class="tt">${b?`<span class="stc ${b.on===false?'off':'on'}" data-tg="${b.k}" onpointerdown="event.stopPropagation()" title="Clique pra ${b.on===false?'ativar':'inativar'}">${b.on===false?'INATIVO':'ATIVO'}</span>`:''}${esc(n.nm)}</div>${n.s?`<small>${esc(n.s)}</small>`:''}`}
+ if(n.kind==='txt'){const b=n.id.endsWith('_title')&&FUNB(n.f);return `<div class="tt">${b?`<span class="stc ${b.on===false?'off':'on'}" data-tg="${b.k}" onpointerdown="event.stopPropagation()" title="Clique pra ${b.on===false?'ativar':'inativar'}">${b.on===false?'INATIVO':'ATIVO'}</span>`:''}${esc(n.nm)}${b?pills(b):''}</div>${n.s?`<small>${esc(n.s)}</small>`:''}`}
  if(n.kind==='note')return `<div class="nt">${esc(n.nm)}</div>`;
  if(n.kind==='ev')return `<div class="evc"><div class="eh">${esc(n.nm)}<i>${esc(n.v||'')}</i></div><p>${esc(n.s||'')}</p><ul>${(n.com||[]).slice(0,5).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
  if(n.kind==='ad'){const m=adM(n.nm);return `<div class="sh">${ic('meta')}<i class="dt${m.sp?'':' z'}"></i><div class="port" title="Arraste para conectar">${ic('plus')}</div></div><div class="lb">${n.url?`<div><a class="op" href="${esc(/^https?:\/\//i.test(n.url)?n.url:'https://'+n.url)}" target="_blank" rel="noopener" onpointerdown="event.stopPropagation()">Abrir</a></div>`:''}<b>${esc(n.nm)}</b><div class="m">${m.sp?`${brl(m.sp)} · ${m.ld} leads`:'sem dados no período'}</div>${m.ld?`<div class="s">CPL ${brl(m.sp/m.ld)} · CTR ${m.imp?(m.clk/m.imp*100).toFixed(2).replace('.',','):'0'}%</div>`:''}</div>`}
@@ -657,7 +697,7 @@ function nodeHTML(n){
  <div class="lb"><div>${opH}</div><b>${esc(n.nm)}</b>${met?`<div class="m">${esc(met)}</div>`:''}${n.s?`<div class="s">${esc(n.s)}</div>`:''}${bt?`<div class="lbx">${bt}</div>`:''}</div>`;
 }
 function fRender(){
- const box=$('#nds');box.innerHTML='';box.onclick=e=>{const tg=e.target.closest('.stc[data-tg]');if(tg){const b=FUNB(tg.dataset.tg);if(b)setOn(b.k,b.on===false);return}const a=e.target.closest('.op[data-cfg]');if(!a)return;e.preventDefault();const id=a.closest('.nd').dataset.id;fSelect({t:'n',id});openPanel('cfg');setTimeout(()=>{const u=$('#f_url');if(u){u.focus()}},60)};
+ const box=$('#nds');box.innerHTML='';box.onclick=e=>{const op=e.target.closest('.pil[data-op]');if(op){fSelect({t:'n',id:op.closest('.nd').dataset.id});openPanel(op.dataset.op);return}const tg=e.target.closest('.stc[data-tg]');if(tg){const b=FUNB(tg.dataset.tg);if(b)setOn(b.k,b.on===false);return}const a=e.target.closest('.op[data-cfg]');if(!a)return;e.preventDefault();const id=a.closest('.nd').dataset.id;fSelect({t:'n',id});openPanel('cfg');setTimeout(()=>{const u=$('#f_url');if(u){u.focus()}},60)};
  visN().forEach(n=>{const d=document.createElement('div');d.className=`nd ${n.kind}${szOf(n)===SZ.form?' sm':''}${fSel&&fSel.t==='n'&&fSel.id===n.id?' sel':''}${FUNB(n.f)&&FUNB(n.f).on===false?' dim':''}`;d.dataset.id=n.id;d.style.cssText=`left:${n.x}px;top:${n.y}px;--c:${n.col||'#0147FF'}`;d.innerHTML=nodeHTML(n);box.appendChild(d)});
  drawEdges();drawBgs();posFTB();
 }
@@ -776,8 +816,8 @@ const ta=(id,val,ph='')=>`<textarea class="in" id="${id}" placeholder="${esc(ph)
 const closeBtn=`<button class="x" onclick="closePanel()">${ic('x')}</button>`;
 function closePanel(){if(isMob())document.body.classList.remove('openR');else{document.body.classList.add('hideR');$('#tR').classList.remove('on')}}
 function panel(){
- const H=$('#phead'),B=$('#pbody');
- if(!fSel){H.innerHTML=`<div class="shd"><h3>Visão geral</h3>${closeBtn}</div>`;B.innerHTML=overview();bindOverview();return}
+ const H=$('#phead'),B=$('#pbody');document.body.classList.remove('wideP','wideB');
+ if(!fSel){H.innerHTML=`<div class="shd"><h3>Visão geral</h3>${closeBtn}</div><div class="ptabs">${[['fun','Funis'],['orc','Orçamento']].map(([k,l])=>`<button data-o="${k}" class="${oTab===k?'on':''}">${l}</button>`).join('')}</div>`;H.querySelectorAll('[data-o]').forEach(x=>x.onclick=()=>{oTab=x.dataset.o;panel()});if(oTab==='orc'){document.body.classList.toggle('wideB',!isMob());B.innerHTML=budUI();bindBud()}else{B.innerHTML=overview();bindOverview()}return}
  if(fSel.t==='e'){const e=S.edges.find(z=>z.id===fSel.id);if(!e){fSel=null;return panel()}const A=nById(e.a),Bn=nById(e.b);
   H.innerHTML=`<div class="shd"><h3>Conexão</h3>${closeBtn}</div>`;
   B.innerHTML=`<p class="muted">${esc(A.nm)} → ${esc(Bn.nm)}</p>${F('Texto na seta',inp('e_l',e.l,'ex.: 45%'))}
@@ -788,10 +828,12 @@ function panel(){
   return}
  const n=nById(fSel.id);if(!n){fSel=null;return panel()}
  const icoH=n.kind==='page'?`<div class="ico"><div style="width:34px;height:42px;border-radius:4px;overflow:hidden;box-shadow:0 2px 8px rgba(20,30,60,.15)">${pageSVG(n.ic,n.col)}</div></div>`:n.kind==='txt'||n.kind==='note'?`<div class="ico" style="background:#f1f3f8;border-radius:12px">${ic(n.kind==='note'?'note':'edit')}</div>`:`<div class="ico" style="border-radius:${n.kind==='src'||n.kind==='act'?'50%':'12px'};background:${n.kind==='src'?n.col:'#fff'};color:${n.kind==='src'?'#fff':n.col};border:${n.kind==='src'?0:2}px solid ${n.col}">${icx(n.ic)}</div>`;
- const simple=n.kind==='txt'||n.kind==='note';
+ const simple=n.kind==='txt'||n.kind==='note',ttl=n.kind==='txt'&&n.id.endsWith('_title')&&FUNB(n.f),TT=['doc','ck','orc','tit'];
+ if(ttl&&!TT.includes(pTab))pTab='doc';if(!ttl&&TT.includes(pTab))pTab='cfg';
  H.innerHTML=`<i class="grab"></i><div class="shd" style="padding-bottom:4px"><span style="flex:1"></span>${closeBtn}</div><div class="phd">${icoH}<div><h4>${esc(n.nm.split('\n')[0])}</h4><p>${esc(kindName(n))}${n.f&&n.f!=='all'&&FUNB(n.f)?' · '+esc(FUNB(n.f).nm):''}</p></div></div>`+
-  (simple?'':`<div class="ptabs">${[['cfg','Config'],['copy','Copy'],['ads','Anúncios'],['notes','Notas']].map(([k,l])=>`<button data-t="${k}" class="${pTab===k?'on':''}">${l}${k==='ads'&&n.ads&&n.ads.length?`<span class="n">${n.ads.length}</span>`:''}</button>`).join('')}</div>`);
+  (ttl?`<div class="ptabs">${[['doc','Copy'],['ck','Checklist'],['orc','Orçamento'],['tit','Título']].map(([k,l])=>`<button data-t="${k}" class="${pTab===k?'on':''}">${l}</button>`).join('')}</div>`:simple?'':`<div class="ptabs">${[['cfg','Config'],['copy','Copy'],['ads','Anúncios'],['notes','Notas']].map(([k,l])=>`<button data-t="${k}" class="${pTab===k?'on':''}">${l}${k==='ads'&&n.ads&&n.ads.length?`<span class="n">${n.ads.length}</span>`:''}</button>`).join('')}</div>`);
  H.querySelectorAll('.ptabs button').forEach(b=>b.onclick=()=>{pTab=b.dataset.t;panel()});
+ if(ttl&&pTab!=='tit'){if(pTab==='doc'){document.body.classList.toggle('wideP',wideOn&&!isMob());B.innerHTML=docUI(ttl);bindDoc(ttl)}else if(pTab==='ck'){B.innerHTML=ckUI(ttl);bindCk(ttl)}else{B.innerHTML=orcUI(ttl);bindOrc(ttl)}return}
  if(simple){B.innerHTML=F(n.kind==='note'?'Nota':'Título',n.kind==='note'?ta('f_nm',n.nm):inp('f_nm',n.nm))+(n.kind==='txt'?F('Subtítulo',inp('f_s',n.s))+F('Cor',`<input type="color" class="in" id="f_col" value="${n.col}" style="height:40px;padding:4px">`):'')+`<div style="margin-top:20px"><button class="btn red" onclick="delSel()">${ic('trash')}Apagar</button></div>`;bindFields(n);return}
  if(pTab==='cfg'){
   B.innerHTML=F('Nome',inp('f_nm',n.nm))+F('Tipo',`<select class="in" id="f_tp">${CAT.map(([k,lab,,items])=>`<optgroup label="${lab}">${items.map((it,i)=>`<option value="${k}|${i}" ${(n.kind===k||(k==='off'&&n.kind==='note'))&&n.ic===it[0]?'selected':''}>${it[2]}</option>`).join('')}</optgroup>`).join('')}</select>`)+
@@ -839,10 +881,111 @@ function bindFields(n){
  [['f_com','com'],['f_up','up'],['f_top','top'],['f_bot','bot']].forEach(([id,k])=>{const el=$('#'+id);if(!el)return;el.onfocus=()=>snap();el.oninput=()=>{n[k]=el.value.split('\n').filter(x=>x.trim());save();if(k==='top'||k==='bot')fRender()}});
  bindAB(n);
 }
+/* ---------- orçamento por funil: planilha no painel, verba aparece no título de cada funil ---------- */
+let oTab='fun',wideOn=false;
+const BUD0=[['WEB Lives semanal','web',6000,1],['TEMPCOM Template comercial','temp',4000,1],['DIAG360 Diagnostico do turismo','diag',3000,1],['KLT-K Impulsionar','',2000,1],['IAs Turismo low ticket','ia',1000,1],['WEB Diario','',1000,1],['KLT-T Depoimento remarketing','',180,1],['AULA 01 - Iniciante','',0,0],['AULA 02 - Avançado','',0,0],['VSL','yt',0,0],['KPL','',0,0]];
+function BG(){if(!S.budget||!Array.isArray(S.budget.rows))S.budget={mes:'12/10',meta:17000,rows:BUD0.map(([nm,f,v,on])=>({nm,f:FUNB(f)?f:'',v,on:!!on}))};return S.budget}
+const rs=v=>'R$ '+Math.round(+v||0).toLocaleString('pt-BR');
+const pc=v=>{const t=+BG().meta||budTot();return t?Math.round((+v||0)/t*100)+'%':'0%'}; // % sobre a meta, igual à planilha
+function budTot(){return BG().rows.reduce((a,r)=>a+(r.on?+r.v||0:0),0)}
+function budOf(k){return BG().rows.reduce((a,r)=>a+(r.on&&r.f===k?+r.v||0:0),0)}
+function budDif(){const d=budTot()-(+BG().meta||0);return d===0?['bate com a meta','pos']:d>0?[rs(d)+' acima','neg']:[rs(-d)+' livre','pos']}
+function guessF(nm){const s=nm.toLowerCase();const t=[[/diag/,'diag'],[/tempcom|template/,'temp'],[/\bias?\b|isca ia/,'ia'],[/web.*(live|semanal)|webinar/,'web'],[/vsl|youtube/,'yt'],[/preg/,'preg'],[/live turis/,'turis'],[/agend/,'agd'],[/membro/,'memb']].find(([r])=>r.test(s));return t&&FUNB(t[1])?t[1]:''}
+function budParse(txt){const out=[];txt.split(/\r?\n/).forEach(l=>{if(!l.trim())return;const c=l.split(/\t|;/).map(x=>x.trim());
+ const nm=c.find(x=>x&&!/^[✅❌✔✖☑☐️\s]+$/.test(x)&&!/^R\$|^[\d.,]+\s*%?$/.test(x));if(!nm||/^(total|funil)\b/i.test(nm))return;
+ const vc=[...c].reverse().find(x=>/^R\$\s*[\d.,]+$|^[\d.]+(,\d+)?$/.test(x));const v=vc?Math.round(+vc.replace(/R\$|\s|\./g,'').replace(',','.')||0):0;
+ out.push({nm,v,on:/❌|✖|☐/.test(l)?false:(/✅|✔|☑/.test(l)||v>0)})});return out}
+function budUI(){const g=BG(),t=budTot(),[dt,dc]=budDif();
+ return `<p class="muted" style="margin-top:12px">Mexe aqui e a verba aparece sozinha do lado do nome de cada funil no quadro. O % é calculado sobre a meta, igual à planilha.</p>
+ <div class="row"><div>${F('Planilha / mês',inp('bg_mes',g.mes,'ex.: 12/10'))}</div><div>${F('Meta de verba',`<input class="in" id="bg_meta" inputmode="numeric" value="${+g.meta||0}">`)}</div></div>
+ <div class="bsum"><div><span>Previsto ativo</span><b id="bg_tot">${rs(t)}</b></div><div><span>Meta</span><b id="bg_mt">${rs(g.meta)}</b></div><div><span>Diferença</span><b id="bg_dif" class="${dc}">${dt}</b></div></div>
+ <div class="btb"><div class="bth"><span></span><span>Funil</span><span style="text-align:right">Previsto</span><span style="text-align:right">%</span><span></span></div>
+ ${g.rows.map((r,i)=>`<div class="btr${r.on?'':' off'}" data-i="${i}"><button class="bon" data-on="${i}" title="${r.on?'Ativo · clique pra inativar':'Inativo · clique pra ativar'}">${r.on?'✅':'❌'}</button><div class="bnm"><input class="in" data-k="nm" value="${esc(r.nm)}" placeholder="nome na planilha"><select class="in" data-k="f"><option value="">sem funil no mapa</option>${S.boards.map(b=>`<option value="${b.k}" ${r.f===b.k?'selected':''}>${esc(b.nm||'Funil sem nome')}</option>`).join('')}</select></div><input class="in bv" data-k="v" inputmode="numeric" value="${+r.v||0}"><span class="bp">${r.on?pc(+r.v||0,t):'0%'}</span><button class="x" data-del="${i}" title="Remover linha">${ic('trash')}</button></div>`).join('')}</div>
+ <button class="btn" id="bg_add">${ic('plus')}Nova linha</button>
+ <details class="bpaste"><summary>Colar da planilha</summary><p class="muted" style="margin:8px 0">Seleciona as linhas no Google Sheets (status, funil, %, previsto), copia e cola aqui. A linha TOTAL é ignorada e ❌ entra como inativo. O funil do mapa de cada linha é mantido.</p><textarea class="in" id="bg_txt" placeholder="✅	WEB Lives semanal	35%	R$ 6.000"></textarea><button class="btn pri" id="bg_imp" style="margin-top:8px">Substituir tabela</button></details>`}
+let budT;
+function budLive(){const t=budTot(),[dt,dc]=budDif(),g=BG();$('#bg_tot').textContent=rs(t);$('#bg_mt').textContent=rs(g.meta);const d=$('#bg_dif');d.textContent=dt;d.className=dc;
+ $('#pbody').querySelectorAll('.btr').forEach(el=>{const r=g.rows[+el.dataset.i];el.querySelector('.bp').textContent=r.on?pc(+r.v||0,t):'0%'});clearTimeout(budT);budT=setTimeout(()=>{if(S.mode==='funnel')fRender()},250)}
+function bindBud(){const g=BG(),B=$('#pbody');
+ [['bg_mes','mes'],['bg_meta','meta']].forEach(([id,k])=>{const el=$('#'+id);el.onfocus=()=>snap();el.oninput=()=>{g[k]=k==='meta'?+el.value.replace(/\D/g,'')||0:el.value;save();budLive()}});
+ B.querySelectorAll('.btr').forEach(el=>{const r=g.rows[+el.dataset.i];el.querySelectorAll('[data-k]').forEach(x=>{x.onfocus=()=>snap();x.oninput=x.onchange=()=>{const k=x.dataset.k;r[k]=k==='v'?+x.value.replace(/\D/g,'')||0:x.value;save();budLive()}})});
+ B.querySelectorAll('[data-on]').forEach(x=>x.onclick=()=>{snap();const r=g.rows[+x.dataset.on];r.on=!r.on;save();fRender();panel()});
+ B.querySelectorAll('[data-del]').forEach(x=>x.onclick=()=>{snap();g.rows.splice(+x.dataset.del,1);save();fRender();panel()});
+ $('#bg_add').onclick=()=>{snap();g.rows.push({nm:'',f:'',v:0,on:true});save();panel();const l=B.querySelectorAll('.btr [data-k="nm"]');l.length&&l[l.length-1].focus()};
+ $('#bg_imp').onclick=()=>{const rows=budParse($('#bg_txt').value);if(!rows.length){alert('Não achei linhas com funil e valor. Cola as colunas da planilha (funil e previsto).');return}
+  snap();g.rows=rows.map(r=>{const o=g.rows.find(x=>x.nm.trim().toLowerCase()===r.nm.toLowerCase());return {...r,f:o?o.f:guessF(r.nm)}});save();fRender();panel()};
+}
+function pills(b){const v=budOf(b.k),c=ckP(b),o=[];
+ if(v)o.push(`<span class="pil bud" data-op="orc" onpointerdown="event.stopPropagation()" title="Verba prevista · clique pra ver">${rs(v)} · ${pc(v,budTot())}</span>`);
+ if(c.d)o.push(`<span class="pil ck" data-op="ck" onpointerdown="event.stopPropagation()" title="Checklist de implementação">${c.d}/${c.t}</span>`);
+ if(b.docEd)o.push(`<span class="pil cp" data-op="doc" onpointerdown="event.stopPropagation()" title="Abrir doc de copy">Copy</span>`);return o.join('')}
+function orcUI(b){const t=budTot(),v=budOf(b.k),rows=BG().rows.filter(r=>r.f===b.k);
+ return `<div class="bsum"><div><span>Verba do funil</span><b>${rs(v)}</b></div><div><span>Do total</span><b>${pc(v,t)}</b></div><div><span>Total ativo</span><b>${rs(t)}</b></div></div>
+ <div class="btb">${rows.length?rows.map(r=>`<div class="btr${r.on?'':' off'}" style="grid-template-columns:24px 1fr auto"><span class="bon">${r.on?'✅':'❌'}</span><div class="bnm"><b style="font-size:13px">${esc(r.nm||'sem nome')}</b></div><span class="bp">${rs(r.v)}</span></div>`).join(''):`<div class="btr" style="display:block"><span class="muted">Nenhuma linha da planilha ligada a esse funil ainda.</span></div>`}</div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="o_all">${ic('money')}Abrir planilha de orçamento</button>${rows.length?'':`<button class="btn" id="o_add">${ic('plus')}Criar linha pra esse funil</button>`}</div>`}
+function bindOrc(b){const go=()=>{oTab='orc';fSelect(null);openPanel('cfg')};$('#o_all').onclick=go;const a=$('#o_add');if(a)a.onclick=()=>{snap();BG().rows.push({nm:b.nm,f:b.k,v:0,on:true});save();go()}}
+
+/* ---------- checklist de implementação (mensagem do Robson) ---------- */
+const ROB=[['Oferta e qualificação',['Público definido','Promessa','Entrega','Critérios pra encaminhar ao comercial']],
+ ['Copy e criativos',['Anúncios','Roteiros','Argumentos','Provas','Objeções','CTAs']],
+ ['Páginas',['Copy e layout da LP','Formulário','Página de obrigado','Agendamento','Página de vendas','Mesma promessa do anúncio']],
+ ['Grupos de WhatsApp',['Entrada','Descrição','Mensagem fixada','Boas-vindas','Calendário de conteúdo','Aquecimento','Lembretes','Pós-live']],
+ ['Sequências',['Entrega','Nutrição','Convite','Recuperação','Acompanhamento','Prazo e condição de parada']],
+ ['Webinar e comercial',['Roteiro da aula','Apresentação da oferta','Script SDR','Script closer','Caminho pra quem não assistiu','Caminho pra quem não agendou','Caminho pra quem não comprou']],
+ ['Operação',['CRM conectado','Agenda','Checkout','Automações','Responsáveis definidos','Jornada completa testada']]];
+const ROBN=`Boa Gabriel, a estrutura está bem encaminhada, o próximo passo é transformar o mapa em um plano de implementação, detalhando os ativos e as regras de cada etapa:
+• Oferta e qualificação: definir público, promessa, entrega e critérios para encaminhar ao comercial.
+Eu organizaria isso em um checklist por funil, primeiro fecharia Webinar, depois template e Diag360.
+O mapa do fluxo mostra o caminho, para ficar 100% implementável, cada etapa precisa ter o que será entregue, a peça pronta e a regra de funcionamento.
+Após isso entendo que já podemos planejar e discutir sobre a estratégia, e estando tudo certo, pode ir para as próximas etapas
+• Copy e criativos: produzir anúncios, roteiros, argumentos, provas, objeções e CTAs de cada funil.
+• Páginas: finalizar copy e layout das LPs, formulários, páginas de obrigado, agendamento e vendas, mantendo a mesma promessa do anúncio.
+• Grupos de WhatsApp: definir entrada, descrição, mensagem fixada, boas-vindas, calendário de conteúdo, aquecimento, lembretes e pós-live.
+• Sequências: escrever mensagens e e-mails de entrega, nutrição, convite, recuperação e acompanhamento, com prazo e condição de parada.
+• Webinar e comercial: fechar roteiro da aula, apresentação da oferta, scripts de SDR/closer e caminhos para quem não assistiu, não agendou ou não comprou.
+• Operação: conectar CRM, agenda, checkout e automações, definir responsáveis e testar a jornada completa.`;
+const PRI=['web','temp','diag'];
+const CKT=ROB.reduce((a,s)=>a+s[1].length,0);
+function CK(b){if(!b.ck||!b.ck.i)b.ck={i:{},f:{}};return b.ck}
+function ckP(b){return {d:b.ck&&b.ck.i?Object.values(b.ck.i).filter(Boolean).length:0,t:CKT}}
+function ckUI(b){const c=CK(b),p=ckP(b),pi=PRI.indexOf(b.k);
+ return `<div class="rob"><b>Plano de implementação · Robson</b><p>O mapa mostra o caminho. Pra ficar 100% implementável, cada etapa precisa ter <b>o que será entregue</b>, <b>a peça pronta</b> e <b>a regra de funcionamento</b>.</p><div class="pri">${PRI.filter(FUNB).map((k,i)=>`<span class="${k===b.k?'on':''}">${i+1}º ${esc(FUNB(k).nm)}</span>`).join('')}</div><details><summary>Mensagem completa do Robson</summary><p style="white-space:pre-wrap;margin-top:6px">${esc(ROBN)}</p></details></div>
+ <div class="ckbar"><i id="ck_bar" style="width:${p.d/p.t*100}%"></i></div><p class="muted" id="ck_p" style="margin-top:6px">${p.d} de ${p.t} itens prontos${pi>=0?` · prioridade ${pi+1} da fila`:''}</p>`+
+ ROB.map(([t,its],s)=>{const dn=its.filter((_,j)=>c.i[s+'_'+j]).length,fv=c.f[s]||{};
+  return `<details class="cks${dn===its.length?' done':''}" data-s="${s}"${s===0?' open':''}><summary><span class="cn">${s+1}</span>${esc(t)}<em>${dn}/${its.length}</em></summary><div class="cki">${its.map((it,j)=>`<label><input type="checkbox" data-c="${s}_${j}"${c.i[s+'_'+j]?' checked':''}>${esc(it)}</label>`).join('')}</div>${F('O que será entregue',`<textarea class="in" data-f="e" style="min-height:56px">${esc(fv.e||'')}</textarea>`)}${F('Peça pronta (link)',`<input class="in" data-f="p" value="${esc(fv.p||'')}" placeholder="https://">`)}${F('Regra de funcionamento',`<textarea class="in" data-f="r" style="min-height:56px" placeholder="quando entra, quando sai, quem faz">${esc(fv.r||'')}</textarea>`)}</details>`}).join('')}
+function bindCk(b){const c=CK(b),B=$('#pbody');
+ B.querySelectorAll('.cks').forEach(sec=>{const s=+sec.dataset.s,its=ROB[s][1];
+  sec.querySelectorAll('[data-c]').forEach(x=>x.onchange=()=>{snap();if(x.checked)c.i[x.dataset.c]=1;else delete c.i[x.dataset.c];save();
+   const dn=its.filter((_,j)=>c.i[s+'_'+j]).length,p=ckP(b),pi=PRI.indexOf(b.k);sec.querySelector('em').textContent=dn+'/'+its.length;sec.classList.toggle('done',dn===its.length);
+   $('#ck_bar').style.width=p.d/p.t*100+'%';$('#ck_p').textContent=`${p.d} de ${p.t} itens prontos${pi>=0?` · prioridade ${pi+1} da fila`:''}`;fRender()});
+  sec.querySelectorAll('[data-f]').forEach(x=>{x.onfocus=()=>snap();x.oninput=()=>{(c.f[s]||(c.f[s]={}))[x.dataset.f]=x.value;save()}})})}
+
+/* ---------- doc de copy por funil (Fialho grava daqui) ---------- */
+const PROM={
+ web:[['Tema A · Lucro',['Sua agência fatura R$ 100 mil e sobra R$ 8 mil? Em 60 dias você coloca mais R$ 10 mil de lucro no bolso. Todo mês.','Os 3 vazamentos que roubam R$ 10 mil por mês da sua agência. Tampa hoje, sente no caixa em 60 dias.','Pare de trabalhar de graça pro fornecedor. Mais R$ 10 mil de lucro limpo por mês, sem vender um pacote a mais.','Mesma agência, mesmos clientes, R$ 120 mil a mais de lucro no ano. Terça, 19h, eu te mostro onde está.','Você vende muito e lucra pouco. Em 60 dias isso acaba.']],
+  ['Tema B · Vendas',['Um pacote vendido por dia em 30 dias. Sem baixar preço, sem implorar cliente.','Do orçamento ao Pix em 48h: as 7 mensagens que matam o "vou pensar".','WhatsApp cheio de orçamento e vazio de Pix? Em 30 dias vira 1 venda por dia.','30 pacotes em 30 dias. O roteiro que faz agência pequena vender como operadora.','Nunca mais fique no vácuo depois do orçamento. O cliente fecha ou diz não em 48h.']]],
+ diag:[['',['Em 40 minutos a gente acha os R$ 10 mil que sua agência perde todo mês. De graça.','Raio-X completo: lucro, vendas e equipe. Você sai da call sabendo o que cortar e o que escalar.','Fatura acima de R$ 30 mil e não sabe pra onde vai o dinheiro? Uma call resolve.','Seu contador te mostra o passado. O Diagnóstico 360 te mostra os próximos R$ 120 mil.','Uma call. Três vazamentos. Um plano pra lucrar R$ 10 mil a mais em 60 dias.']]],
+ temp:[['',['Copia, cola, vende. As mensagens que fecham pacote no WhatsApp.','O script que tira o cliente do "vou pensar" e leva direto pro Pix.','Pare de escrever orçamento do zero. Template pronto, venda no mesmo dia.','7 mensagens que valem mais que um vendedor novo.','O roteiro exato que as agências que mais vendem usam pra fechar em 48h. Grátis.']]],
+ ia:[['',['A IA que monta roteiro, orçamento e post da sua agência em 5 minutos.','O trabalho de um funcionário inteiro, sem pagar salário.','Enquanto você dorme, a IA responde cliente e monta proposta.','20 horas por semana de volta. Prompts prontos pra agência de turismo.','Sua concorrente já vende com IA. Pega os prompts antes que ela te engula.']]],
+ yt:[['',['Por que agências que faturam R$ 100 mil quebram (e como não ser a próxima).','O erro invisível que faz você vender muito e lucrar pouco.','Assista antes de mandar o próximo orçamento.','Como uma agência de bairro passou a vender 1 pacote por dia.','A conta que ninguém te mostrou sobre a margem do seu pacote.']]],
+ preg:[['',['72 horas. Quem entra agora começa o próximo mês com mais R$ 10 mil de lucro na mira.','Bônus e parcelado só até sexta. Depois, preço cheio e fila.','Vagas contadas. Fechou, fechou.','Ou você entra agora, ou fecha o ano igual começou.','A condição que não volta este ano. Decide hoje.']]]};
+function docDef(b){const p=PROM[b.k];
+ return `<h1>${esc(b.nm||'Funil')} · Copy</h1><p><i>Doc de gravação do funil. Escreve direto aqui, salva sozinho.</i></p><h2>Promessa</h2>${p?p.map(([t,l])=>`${t?`<h3>${esc(t)}</h3>`:''}<ul>${l.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`).join(''):'<p>Resultado + prazo + sem qual dor.</p>'}<h2>Gancho (3 primeiros segundos)</h2><ul><li><br></li></ul><h2>Roteiro de gravação</h2><ol><li><b>Abertura:</b> </li><li><b>Problema:</b> </li><li><b>Virada:</b> </li><li><b>Prova:</b> </li><li><b>Oferta:</b> </li><li><b>CTA:</b> </li></ol><h2>Provas e depoimentos</h2><ul><li><br></li></ul><h2>Objeções e respostas</h2><ul><li><br></li></ul><h2>CTA final</h2><p><br></p>`}
+const clean=h=>String(h).replace(/<(script|style|iframe|object|embed)[\s\S]*?<\/\1>/gi,'').replace(/<(script|iframe|object|embed|link|meta)\b[^>]*>/gi,'').replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi,'').replace(/javascript:/gi,'');
+function docUI(b){return `<div class="dtb"><button data-x="h2" title="Título">T</button><button data-x="h3" title="Subtítulo">t</button><button data-x="p" title="Texto normal">¶</button><button data-x="bold" title="Negrito"><b>B</b></button><button data-x="italic" title="Itálico"><i>I</i></button><button data-x="ul" title="Lista">•</button><button data-x="ol" title="Lista numerada">1.</button><span class="sp"></span>${isMob()?'':`<button data-x="wide">${wideOn?'Recolher':'Expandir'}</button>`}<button data-x="dl" title="Baixar como Word">${ic('ext')} .doc</button></div><div class="doc" id="d_ed" contenteditable="true" spellcheck="true">${clean(b.doc||docDef(b))}</div><p class="muted" style="margin-top:8px">Salva sozinho neste navegador. Pra mandar pra alguém, use Baixar .doc ou o backup do mapa.</p>`}
+function docDL(b){const h=`<html><head><meta charset="utf-8"><title>${esc(b.nm)}</title></head><body style="font-family:Arial,sans-serif">${clean(b.doc||docDef(b))}</body></html>`;
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+h],{type:'application/msword'}));a.download='copy-'+((b.nm||'funil').toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'funil')+'.doc';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),3000)}
+function bindDoc(b){const ed=$('#d_ed');let t;
+ ed.onfocus=()=>snap();
+ ed.oninput=()=>{b.doc=ed.innerHTML;save();if(!b.docEd){b.docEd=1;clearTimeout(t);t=setTimeout(()=>{if(S.mode==='funnel')fRender()},300)}};
+ ed.onpaste=e=>{e.preventDefault();document.execCommand('insertText',false,(e.clipboardData||window.clipboardData).getData('text/plain'))};
+ $('#pbody').querySelectorAll('.dtb button').forEach(x=>{x.onmousedown=e=>e.preventDefault();x.onclick=()=>{const k=x.dataset.x;
+  if(k==='wide'){wideOn=!wideOn;panel();return}if(k==='dl'){docDL(b);return}
+  ed.focus();if(k==='h2'||k==='h3'||k==='p')document.execCommand('formatBlock',false,k);else if(k==='ul')document.execCommand('insertUnorderedList');else if(k==='ol')document.execCommand('insertOrderedList');else document.execCommand(k);ed.oninput()}})}
 function overview(){
  const act=S.boards.filter(b=>b.on!==false).length;
- return `<p class="muted">${S.boards.length} funis · ${act} ativos · clique pra abrir</p>`+S.boards.map(b=>{const ns=S.nodes.filter(n=>n.f===b.k&&n.kind!=='txt'&&n.kind!=='note');const ads=ns.filter(n=>n.kind==='ad').length;const m=adM(null,b.k);
-  return `<div class="fc${b.on===false?' off':''}${S.board===b.k?' cur':''}" data-k="${b.k}"><i style="background:${b.col}"></i><div class="fi"><b>${esc(b.nm)}</b><span>${m.sp?`${brl(m.sp)} · ${m.ld} leads${m.ld?' · CPL '+brl(m.sp/m.ld):''}`:`${ns.filter(n=>n.kind!=='ev'&&n.kind!=='ad').length} etapas${ads?' · '+ads+' anúncios':''}${ns.some(n=>n.kind==='ev')?' · '+ns.filter(n=>n.kind==='ev').length+' lives':''}`}</span></div><button class="tg${b.on===false?'':' on'}" data-t="${b.k}" title="${b.on===false?'Inativo · clique pra ativar':'Ativo · clique pra desativar'}"><i></i></button></div>`}).join('')+
+ return `<p class="muted">${S.boards.length} funis · ${act} ativos · clique pra abrir</p><div class="ovb" id="ovBud">${ic('money')}<span>Orçamento ${esc(BG().mes||'')}<br>previsto nos funis ativos</span><b>${rs(budTot())}</b></div>`+S.boards.map(b=>{const ns=S.nodes.filter(n=>n.f===b.k&&n.kind!=='txt'&&n.kind!=='note');const ads=ns.filter(n=>n.kind==='ad').length;const m=adM(null,b.k);
+  return `<div class="fc${b.on===false?' off':''}${S.board===b.k?' cur':''}" data-k="${b.k}"><i style="background:${b.col}"></i><div class="fi"><b>${esc(b.nm)}</b><span>${m.sp?`${brl(m.sp)} · ${m.ld} leads${m.ld?' · CPL '+brl(m.sp/m.ld):''}`:`${ns.filter(n=>n.kind!=='ev'&&n.kind!=='ad').length} etapas${ads?' · '+ads+' anúncios':''}${ns.some(n=>n.kind==='ev')?' · '+ns.filter(n=>n.kind==='ev').length+' lives':''}`}${(v=>v?` · <em>verba ${rs(v)} (${pc(v,budTot())})</em>`:'')(budOf(b.k))}${(c=>c.d?` · checklist ${c.d}/${c.t}`:'')(ckP(b))}</span></div><button class="tg${b.on===false?'':' on'}" data-t="${b.k}" title="${b.on===false?'Inativo · clique pra ativar':'Ativo · clique pra desativar'}"><i></i></button></div>`}).join('')+
  `<button class="btn" style="margin-top:12px" id="ovAll">${ic('grid')}Ver todos no quadro</button>
  <label class="fl">Como usar</label><div class="kbd"><kbd>Passar o mouse</kbd><span>no card abre os detalhes</span><kbd>●+</kbd><span>bolinha do card: puxa uma conexão</span><kbd>Clique</kbd><span>na seta: editar ou apagar</span><kbd>Del</kbd><span>apaga o selecionado</span><kbd>Scroll</kbd><span>zoom · Shift+scroll move pro lado</span><kbd>Arrastar</kbd><span>o fundo move o quadro</span></div>
  <p class="ver">${VER}</p>`;
@@ -851,6 +994,7 @@ function setOn(k,v){const b=FUNB(k);if(!b)return;snap();b.on=v;save();boards();i
 function bindOverview(){const B=$('#pbody');
  B.querySelectorAll('.fc').forEach(el=>el.onclick=e=>{const t=e.target.closest('.tg');if(t){e.stopPropagation();setOn(t.dataset.t,FUNB(t.dataset.t).on===false);return}
   S.board=el.dataset.k;fSel=null;save();boards();fRender();panel();fit()});
+ const ob=$('#ovBud');if(ob)ob.onclick=()=>{oTab='orc';panel()};
  const a=$('#ovAll');if(a)a.onclick=()=>{S.board='all';fSel=null;save();boards();fRender();panel();fit()};
 }
 
@@ -1047,7 +1191,7 @@ function mMove(dir){return;const m=MP(),n=m.nodes[mSel];if(!n||!n.p)return;const
 
 /* ---------- teclado ---------- */
 document.addEventListener('keydown',e=>{
- const tag=(document.activeElement||{}).tagName;const typing=tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT';
+ const tag=(document.activeElement||{}).tagName;const typing=tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||!!(document.activeElement&&document.activeElement.isContentEditable);
  const mod=e.ctrlKey||e.metaKey;
  if(S.mode==='mind'&&editing){
   if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();const id=editing.id;commitEdit();if(MP().nodes[id])mSelect(id);return}
