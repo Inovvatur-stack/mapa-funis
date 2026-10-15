@@ -37,6 +37,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 #saved{display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 11px;border:1px solid var(--ln);border-radius:99px;background:#fff;font-size:12px;font-weight:600;color:var(--mut);white-space:nowrap}#saved i{width:9px;height:9px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.16);transition:background .2s}#saved.ing i{background:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.18);animation:svp .8s infinite alternate}#saved.err i{background:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.16)}@keyframes svp{to{opacity:.35}}@media(max-width:760px){#saved b{display:none}#saved{padding:0 9px}}
 #nds .mk{position:absolute;top:-13px;right:-13px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;border:2px solid #fff;box-shadow:0 2px 6px rgba(20,30,60,.25);z-index:3;pointer-events:none}#nds .mk svg{width:16px;height:16px;stroke-width:3}#nds .mk.ok{background:#16a34a}#nds .mk.no{background:#dc2626}
 #ftb button.mok.on{color:#16a34a;background:#eafaf0}#ftb button.mno.on{color:#dc2626;background:#fdecec}
+#nds .nd.mark .sh.mkc{width:60px;height:60px;border-radius:50%;background:var(--c);border:3px solid #fff;box-shadow:0 4px 14px rgba(20,30,60,.22);display:grid;place-items:center;color:#fff;padding:0}#nds .nd.mark .mkc>svg{width:30px;height:30px;stroke-width:3.2;color:#fff}#nds .nd.mark.sel .mkc{outline:3px solid #0147FF;outline-offset:3px}
 #ftb .msn{font-size:12px;font-weight:700;padding:0 8px;white-space:nowrap;align-self:center;line-height:1}
 #marq{position:absolute;border:1.5px solid #0147FF;background:rgba(1,71,255,.07);border-radius:4px;pointer-events:none;z-index:40;display:none}.cvs.mouse{cursor:default}.cvs.mouse.panning{cursor:grabbing}#zoom #zMouse.on,#zoom #zHand.on{color:#0147FF;background:#eef3ff}
 /* layout */
@@ -573,7 +574,7 @@ const E=[
  ['dq','grp','volta pro Web','a',1]
 ];
 
-const VER='v-15.10-18h45';
+const VER='v-15.10-18h47';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uid=()=>Math.random().toString(36).slice(2,9);
@@ -677,7 +678,7 @@ function pageSVG(v,c){
 
 /* ---------- catálogo ---------- */
 const CAT=[
- ['fun','Funil','ttl',[['ttl','#0147FF','Título do funil'],['note','#e8b500','Bloco de notas']]],
+ ['fun','Funil','ttl',[['ttl','#0147FF','Título do funil'],['note','#e8b500','Bloco de notas'],['check','#16a34a','Check'],['x','#dc2626','X']]],
  ['src','Tráfego','meta',[
   ['meta','#1877f2','Meta Ads'],['insta','#e1306c','Instagram'],['yt','#ff0000','YouTube Ads'],['google','#34a853','Google Ads'],['tiktok','#111111','TikTok'],['mail','#ff5a5a','E-mail / Base'],['wa','#25d366','WhatsApp'],['organic','#7a5af8','Orgânico'],['rotate','#ff8a00','Remarketing'],['link','#64748b','Link direto'],['user','#0ea5e9','Indicação']]],
  ['page','Páginas','page',[
@@ -689,7 +690,7 @@ const CAT=[
  ['off','Offline','store',[
   ['phone','#0147FF','SDR / Ligação'],['meet','#0147FF','Reunião closer'],['live','#ff2d55','Live / Evento'],['wa','#25d366','Mensagem WhatsApp'],['slides','#8f6bff','Aula / Slides'],['money','#18c27a','Venda'],['rotate','#ffad33','Recuperação'],['mail','#ff5a5a','Sequência e-mail'],['gift','#ff8a00','Bônus'],['user','#475569','Pessoa'],['zap','#ff5a5a','Pregão / Oferta'],['note','#e8b500','Nota'],['wagrp','#25d366','Grupo WhatsApp'],['waapi','#1877f2','API Oficial'],['wanon','#25d366','API não oficial'],['wacall','#25d366','Ligação WhatsApp'],['waaud','#25d366','Áudio WhatsApp'],['wabr','#25d366','Lista de transmissão'],['clock','#64748b','Espera']]]
 ];
-const SZ={ai:{w:64,h:64},form:{w:70,h:88},ad:{w:52,h:52},ev:{w:200,h:170},src:{w:64,h:64},page:{w:96,h:120},act:{w:64,h:64},off:{w:64,h:64},txt:{w:300,h:44},note:{w:200,h:90}};
+const SZ={ai:{w:64,h:64},form:{w:70,h:88},ad:{w:52,h:52},ev:{w:200,h:170},src:{w:64,h:64},page:{w:96,h:120},act:{w:64,h:64},off:{w:64,h:64},txt:{w:300,h:44},note:{w:200,h:90},mark:{w:60,h:60}};
 let CARD=localStorage.getItem('invt-estilo')!=='icone';const CDK=['src','off','act','ai','page'],CW=150;
 const isCard=n=>CARD&&CDK.includes(n.kind);
 function nMet(n){let met='';if(n.kind==='src'&&n.ic==='meta'){const m=adM(null,n.f);if(m.sp)met=brl(m.sp)+' · '+m.ld+' leads'+(m.ld?' · CPL '+brl(m.sp/m.ld):'')}if(n.kind==='act'&&n.ic==='ab')met=(n.vars||[]).map(v=>`${v.l} ${v.p}%`).join(' · ');return met}
@@ -942,6 +943,7 @@ const visN=()=>S.nodes.filter(n=>S.board==='all'||n.f===S.board);
 function bOf(n){if(isCard(n))return cardRect(n);const sz=szOf(n);return {x:n.x,y:n.y,w:sz.w,h:sz.h}}
 function nodeHTML(n){
  const c=n.col||'#0147FF';let sh='';
+ if(n.kind==='mark')return `<div class="sh mkc">${ic(n.ic==='x'?'x':'check')}<div class="port" title="Arraste para conectar">${ic('plus')}</div></div>`;
  if(n.kind==='txt'){const b=n.id.endsWith('_title')&&FUNB(n.f);return `<div class="tt">${b?`<span class="stc ${b.on===false?'off':'on'}" data-tg="${b.k}" onpointerdown="event.stopPropagation()" title="Clique pra ${b.on===false?'ativar':'inativar'}">${b.on===false?'INATIVO':'ATIVO'}</span>`:''}${esc(n.nm)}${b?pills(b):''}</div>${n.s?`<small>${esc(n.s)}</small>`:''}`}
  if(n.kind==='note')return `<div class="nt">${esc(n.nm)}</div>${S.pins&&S.pins[n.id]?`<i class="npin" title="Fixada na tela">${ic('pin')}</i>`:''}`;
  if(n.kind==='ev')return `<div class="evc"><div class="eh">${esc(n.nm)}<i>${esc(n.v||'')}</i></div><p>${esc(n.s||'')}</p><ul>${(n.com||[]).slice(0,5).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
@@ -1038,7 +1040,7 @@ cvF.addEventListener('drop',e=>{e.preventDefault();const d=e.dataTransfer.getDat
 function catItem(k,i){const c=CAT.find(x=>x[0]===k);return c[3][i]}
 function addNode(kind,i,cx,cy,from){
  if(kind==='fun'&&catItem(kind,i)[0]==='ttl')return addFunil(cx,cy);
- const [icn,col,nm]=catItem(kind,i);const isNote=icn==='note';const kk=isNote?'note':kind;const sz=szOf({kind:kk,ic:icn});
+ const [icn,col,nm]=catItem(kind,i);const isNote=icn==='note';const isMk=icn==='check'||icn==='x';const kk=isNote?'note':isMk?'mark':kind;const sz=szOf({kind:kk,ic:icn});
  snap();const n={id:'n'+uid(),f:S.board==='all'?'all':S.board,kind:kk,ic:icn,col,nm:isNote?'Escreva sua nota':nm,v:'',s:'',stt:'',st:'',url:'',com:[],up:[],top:[],bot:[],copy:{},ads:[],...(icn==='ab'?{vars:[{l:'A',p:50},{l:'B',p:50}]}:{}),x:Math.round(cx-sz.w/2),y:Math.round(cy-sz.h/2)};
  S.nodes.push(n);if(from)S.edges.push({id:uid(),a:from,b:n.id,l:'',st:''});save();fRender();fSelect({t:'n',id:n.id});if(isMob())closeSheets();return n;
 }
@@ -1414,7 +1416,7 @@ let lCat='all';
 function lib(){
  $('#ltabs').innerHTML=[['all','Todos','grid'],...CAT].map(([k,l,icn])=>`<button data-k="${k}" class="${lCat===k?'on':''}">${ic(icn)}${l}</button>`).join('');
  const q=$('#q').value.trim().toLowerCase();
- const thumb=(k,it)=>{const [icn,col]=it;if(icn==='note')return `<div class="mini" style="width:40px;height:34px;border-radius:3px;background:#fff6c7;color:#a07d00">${ic('note')}</div>`;if(k==='fun')return `<div class="mini" style="width:44px;height:30px;border-radius:8px;background:#eef3ff;color:${col};font:800 15px Manrope">Aa</div>`;if(k==='page')return `<div class="pg">${pageSVG(icn,col)}</div>`;
+ const thumb=(k,it)=>{const [icn,col]=it;if(icn==='check'||icn==='x')return `<div class="mini" style="width:40px;height:40px;border-radius:50%;background:${col};color:#fff">${ic(icn)}</div>`;if(icn==='note')return `<div class="mini" style="width:40px;height:34px;border-radius:3px;background:#fff6c7;color:#a07d00">${ic('note')}</div>`;if(k==='fun')return `<div class="mini" style="width:44px;height:30px;border-radius:8px;background:#eef3ff;color:${col};font:800 15px Manrope">Aa</div>`;if(k==='page')return `<div class="pg">${pageSVG(icn,col)}</div>`;
   if(k==='src')return `<div class="mini" style="width:40px;height:40px;border-radius:50%;background:${col}">${icx(icn)}</div>`;
   if(k==='act')return `<div class="mini" style="width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid ${col};color:${col}">${icx(icn)}</div>`;
   if(icn==='note')return `<div class="mini" style="width:40px;height:34px;border-radius:3px;background:#fff6c7;color:#a07d00">${ic('note')}</div>`;
@@ -1427,7 +1429,7 @@ function lib(){
 }
 /* arrastar da biblioteca: sombra cinza no tamanho real, solta exatamente onde está */
 function libDrag(el,e){if(e.button||e.pointerType==='touch')return;const k=el.dataset.k,i=+el.dataset.i,sx=e.clientX,sy=e.clientY;let gh=null,ok=false;
- const isT=k==='fun'&&catItem(k,i)[0]==='ttl',sz=isT?SZ.txt:szOf({kind:catItem(k,i)[0]==='note'?'note':k,ic:catItem(k,i)[0]});
+ const isT=k==='fun'&&catItem(k,i)[0]==='ttl',sz=isT?SZ.txt:szOf({kind:catItem(k,i)[0]==='note'?'note':['check','x'].includes(catItem(k,i)[0])?'mark':k,ic:catItem(k,i)[0]});
  const sc=()=>{const a=VF.world(0,0),b=VF.world(100,0);return 100/((b.x-a.x)||100)};
  const tgt=(x,y)=>{if(k!=='ai')return null;const t=document.elementFromPoint(x,y),d=t&&t.closest('#nds .nd');const n=d&&nById(d.dataset.id);return n&&!['ai','txt','note','ev','page'].includes(n.kind)?{d,n}:null};let lt=null;
  const over=(x,y)=>{const t=document.elementFromPoint(x,y);return !!(t&&t.closest('#cvF')&&!t.closest('#lib,#panel,#ftb,.zbar,#qm'))};
