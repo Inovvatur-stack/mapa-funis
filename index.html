@@ -293,6 +293,11 @@ body.mind #dbar{display:none}
 /* visão geral: funis */
 .fc{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid var(--ln);border-radius:13px;margin-top:8px;cursor:pointer;background:#fff;transition:background .15s}
 .fc:hover{background:#f7f9fd}
+.plw{display:flex;flex-direction:column;gap:6px;margin:12px 0 4px;padding:12px;border-radius:13px;background:#f5f7fc;font-size:12px}.plw>b{font-size:12.5px}.plw span{display:flex;gap:8px;align-items:flex-start;color:#334;line-height:1.45}.plw em{font-style:normal}.plw i{font-style:normal;flex:none;width:17px;height:17px;border-radius:50%;background:#0147FF;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center}
+.plt{margin:16px 0 2px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.plc{padding:11px 12px;border:1px solid var(--ln);border-radius:13px;margin-top:8px;cursor:pointer;background:#fff;transition:background .15s,box-shadow .15s}.plc:hover{background:#f7f9fd;box-shadow:0 4px 14px rgba(1,71,255,.08)}
+.plh{display:flex;align-items:center;gap:9px}.plh>i{width:8px;height:22px;border-radius:4px;flex:none}.plh b{flex:1;font-size:13.5px}.plh b em{font-style:normal;color:#0147FF;margin-right:6px}.plh span{font-size:11.5px;color:var(--mut);font-weight:600}
+.plc .ckbar{margin:8px 0 7px}.pls{display:flex;gap:5px}.pls span{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;background:#eef1f7;color:#8a93a6}.pls .mid{background:#ffe9c7;color:#b26a00}.pls .ok{background:#d6f5e6;color:#0c8a52}
 .fc>i{width:10px;height:34px;border-radius:5px;flex:none}
 .fc .fi{flex:1;min-width:0}.fc .fi b{display:block;font-size:13.5px}.fc .fi span{font-size:11.5px;color:var(--mut)}
 .fc.off .fi,.fc.off>i{opacity:.45}
@@ -448,7 +453,7 @@ const E=[
  ['dq','grp','volta pro Web','a',1]
 ];
 
-const VER='v-15.10-14h02';
+const VER='v-15.10-14h07';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uid=()=>Math.random().toString(36).slice(2,9);
@@ -660,6 +665,19 @@ let S;try{S=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){S=null}
 if(!S||S.v!==6){S=fresh();mergeOld()}
 if(!S.mig1){S.mig1=1;const lv=S.nodes.find(n=>n.id==='web_live');if(lv&&!S.nodes.some(n=>n.id==='web_apl')){const cx=lv.x+32,cy=lv.y+32;let prev='web_live';
  [['apl','page','apply','Aplicação','depois da live',8.4,0],['sdr','off','phone','SDR','liga e qualifica',9.4,0],['agd','page','calendar','Agendamento','call com o closer',10.4,0],['cl','off','meet','Closer','reunião de venda',11.4,0],['win','off','money','Venda','',12.4,0,'#18c27a']].forEach(([k,kind,icn,nm,sub,c,r,col],i)=>{const sz=szOf({kind,ic:icn}),id='web_'+k;S.nodes.push({...blank(),sm:1,id,f:'web',k,kind,ic:icn,col:col||'#0147FF',nm,s:sub,x:Math.round(cx+(i+1)*230-sz.w/2),y:Math.round(cy-sz.h/2)});S.edges.push({id:uid(),a:prev,b:id,l:'',st:'',dash:0});prev=id})}}
+if(!S.mig2){S.mig2=1;let off=0;const ty=b=>{const t=S.nodes.find(n=>n.id===b.k+'_title');return t?t.y:1e9};[...S.boards].sort((a,b)=>ty(a)-ty(b)).forEach(b=>{const E=S.edges,nb=id=>S.nodes.find(n=>n.id===id);if(off)S.nodes.forEach(n=>{if(n.f===b.k)n.y+=off});
+ const st=E.filter(e=>{const A=nb(e.a),P=nb(e.b);return A&&P&&A.f===b.k&&(A.kind==='ad'||A.kind==='src')&&P.kind==='page'});if(!st.length)return;
+ const pA=nb(st[0].b);if(!pA||pA.ab||S.nodes.some(n=>n.f===b.k&&n.ic==='ab'))return;
+ const DX=170,sz=szOf(pA),cx=pA.x+sz.w/2,cy=pA.y+sz.h/2,x0=pA.x;
+ S.nodes.forEach(n=>{if(n.f===b.k&&n.x>=x0-4&&n.kind!=='ev'&&n.kind!=='txt')n.x+=DX});
+ const ab={...blank(),id:b.k+'_ab',f:b.k,kind:'act',ic:'ab',col:'#8f6bff',nm:'Teste A/B',s:'split 50/50 na captação',vars:[{l:'A',p:50},{l:'B',p:50}],x:Math.round(cx-32),y:Math.round(cy-32)};
+ const pB={...JSON.parse(JSON.stringify(pA)),id:pA.id+'_b',nm:(pA.nm||'Página')+' · B',url:'',copy:{},ads:[],com:[],up:[],top:[],bot:[],ab:1};
+ pA.nm=(pA.nm||'Página')+' · A';pA.ab=1;pA.y-=85;pB.y+=85;
+ S.nodes.push(ab,pB);off+=100;
+ E.filter(e=>e.b===pA.id&&st.includes(e)).forEach(e=>e.b=ab.id);
+ const out=E.filter(e=>e.a===pA.id);
+ E.push({id:uid(),a:ab.id,b:pA.id,l:'',st:'',dash:0},{id:uid(),a:ab.id,b:pB.id,l:'',st:'',dash:0});
+ out.forEach(e=>E.push({...e,id:uid(),a:pB.id}))})}
 S.nodes.forEach(n=>{if(n.kind==='page'&&SMP.includes(n.ic)&&!n.sm){n.x+=13;n.y+=16;n.sm=1}});
 function mergeOld(src){ // traz da versão anterior: copy, anúncios, links, notas, nós e funis criados
  let o=src;if(!o){for(const k of ['invt-funis-v5','invt-funis-v4']){try{o=JSON.parse(localStorage.getItem(k)||'null')}catch(e){o=null}if(o&&o.nodes)break}}
@@ -864,7 +882,7 @@ const closeBtn=`<button class="x" onclick="closePanel()">${ic('x')}</button>`;
 function closePanel(){if(isMob())document.body.classList.remove('openR');else{document.body.classList.add('hideR');$('#tR').classList.remove('on')}}
 function panel(){
  const H=$('#phead'),B=$('#pbody');document.body.classList.remove('wideP','wideB');
- if(!fSel){H.innerHTML=`<div class="shd"><h3>Visão geral</h3>${closeBtn}</div><div class="ptabs">${[['fun','Funis'],['orc','Orçamento']].map(([k,l])=>`<button data-o="${k}" class="${oTab===k?'on':''}">${l}</button>`).join('')}</div>`;H.querySelectorAll('[data-o]').forEach(x=>x.onclick=()=>{oTab=x.dataset.o;panel()});if(oTab==='orc'){document.body.classList.toggle('wideP',!isMob());B.innerHTML=budUI();bindBud()}else{B.innerHTML=overview();bindOverview()}return}
+ if(!fSel){H.innerHTML=`<div class="shd"><h3>Visão geral</h3>${closeBtn}</div><div class="ptabs">${[['fun','Funis'],['pla','Plano'],['orc','Orçamento']].map(([k,l])=>`<button data-o="${k}" class="${oTab===k?'on':''}">${l}</button>`).join('')}</div>`;H.querySelectorAll('[data-o]').forEach(x=>x.onclick=()=>{oTab=x.dataset.o;panel()});if(oTab==='orc'){document.body.classList.toggle('wideP',!isMob());B.innerHTML=budUI();bindBud()}else if(oTab==='pla'){B.innerHTML=planUI();bindPlan()}else{B.innerHTML=overview();bindOverview()}return}
  if(fSel.t==='e'){const e=S.edges.find(z=>z.id===fSel.id);if(!e){fSel=null;return panel()}const A=nById(e.a),Bn=nById(e.b);
   H.innerHTML=`<div class="shd"><h3>Conexão</h3>${closeBtn}</div>`;
   B.innerHTML=`<p class="muted">${esc(A.nm)} → ${esc(Bn.nm)}</p>${F('Texto na seta',inp('e_l',e.l,'ex.: 45%'))}
@@ -977,7 +995,7 @@ function bindBud(){const g=BG(),B=$('#pbody');
 }
 function pills(b){const v=budOf(b.k),c=ckP(b),o=[];
  if(v)o.push(`<span class="pil bud" data-op="orc" onpointerdown="event.stopPropagation()" title="Verba prevista · clique pra ver">${rs(v)} · ${pc(v,budTot())}</span>`);
- if(c.d)o.push(`<span class="pil ck" data-op="ck" onpointerdown="event.stopPropagation()" title="Checklist de implementação">${c.d}/${c.t}</span>`);
+ o.push(`<span class="pil ck" data-op="ck" onpointerdown="event.stopPropagation()" title="Plano do Robson · clique pra abrir o checklist">${c.d}/${c.t}</span>`);
  if(b.docEd)o.push(`<span class="pil cp" data-op="doc" onpointerdown="event.stopPropagation()" title="Abrir doc de copy">Copy</span>`);return o.join('')}
 function orcUI(b){const t=budTot(),v=budOf(b.k),rows=BG().rows.filter(r=>r.f===b.k);
  return `<div class="bsum"><div><span>Verba do funil</span><b>${rs(v)}</b></div><div><span>Do total</span><b>${pc(v,t)}</b></div><div><span>Total ativo</span><b>${rs(t)}</b></div></div>
@@ -1051,6 +1069,14 @@ function overview(){
  <p class="ver">${VER}</p>`;
 }
 function setOn(k,v){const b=FUNB(k);if(!b)return;snap();b.on=v;save();boards();if(S.mode==='funnel'){fRender();panel()}else mRender()}
+function planUI(){const card=(b,i)=>{const c=CK(b),p=ckP(b);
+  return `<div class="plc" data-k="${b.k}"><div class="plh"><i style="background:${b.col}"></i><b>${i!=null?`<em>${i+1}º</em>`:''}${esc(b.nm)}</b><span>${p.d}/${p.t}</span></div><div class="ckbar"><i style="width:${p.d/p.t*100}%"></i></div><div class="pls">${ROB.map(([t,its],s)=>{const dn=its.filter((_,j)=>c.i[s+'_'+j]).length;return `<span class="${dn===its.length?'ok':dn?'mid':''}" title="${esc(t)} · ${dn}/${its.length}">${s+1}</span>`}).join('')}</div></div>`};
+ const pr=PRI.map(FUNB).filter(Boolean),rest=S.boards.filter(b=>!PRI.includes(b.k));
+ return `<div class="rob"><b>Plano de implementação · Robson</b><p>Cada funil tem um checklist com <b>o que será entregue</b>, <b>a peça pronta</b> e <b>a regra de funcionamento</b> de cada etapa. Ordem: fechar Webinar, depois Template, depois Diag360.</p><details><summary>Mensagem completa do Robson</summary><p style="white-space:pre-wrap;margin-top:6px">${esc(ROBN)}</p></details></div>
+ <div class="plw"><b>Onde fica cada coisa</b><span><i>1</i><em>Clique num funil abaixo: abre o <b>Checklist</b> dele</em></span><span><i>2</i><em>No título do funil: abas <b>Copy</b> (doc do funil) e <b>Checklist</b></em></span><span><i>3</i><em>Clique numa peça (LP, anúncio): aba <b>Copy</b> da peça</em></span></div>
+ <h5 class="plt">Prioridade</h5>${pr.map((b,i)=>card(b,i)).join('')}<h5 class="plt">Depois</h5>${rest.map(b=>card(b)).join('')}<p class="muted" style="margin-top:8px">Bolinhas = etapas: ${ROB.map(([t],s)=>`${s+1} ${esc(t)}`).join(' · ')}</p>`}
+function bindPlan(){$('#pbody').querySelectorAll('.plc').forEach(el=>el.onclick=()=>{const k=el.dataset.k,t=S.nodes.find(n=>n.id===k+'_title')||S.nodes.find(n=>n.f===k&&n.kind==='txt');
+  S.board=k;save();boards();fRender();fit();if(t){fSelect({t:'n',id:t.id});openPanel('ck')}})}
 function bindOverview(){const B=$('#pbody');
  B.querySelectorAll('.fc').forEach(el=>el.onclick=e=>{const t=e.target.closest('.tg');if(t){e.stopPropagation();setOn(t.dataset.t,FUNB(t.dataset.t).on===false);return}
   S.board=el.dataset.k;fSel=null;save();boards();fRender();panel();fit()});
